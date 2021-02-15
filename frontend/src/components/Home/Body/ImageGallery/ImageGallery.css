@@ -1,0 +1,19 @@
+.gallery {
+    /* background-image: url(../../../../assets/stars.jpg); */
+    background-color: #000;
+    margin-bottom: 1rem;
+}
+
+.gallery h3 {
+    text-align: center;
+    text-transform: uppercase;
+    color: green;
+    font-size: 4rem;
+    font-weight: 700;
+    padding: 15px;
+}
+@media (min-width:320px) and (max-width:480px){
+    .gallery h3 {
+        font-size: 2rem;
+    }
+}

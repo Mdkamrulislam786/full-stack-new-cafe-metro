@@ -1,0 +1,13 @@
+.checkout {
+    padding: 2rem 0;
+    background-color: #eee;
+}
+
+.checkout h4 {
+    text-align: center;
+    padding: 10px;
+    color: green;
+}
+.checkout button{
+    align-items: center;
+}

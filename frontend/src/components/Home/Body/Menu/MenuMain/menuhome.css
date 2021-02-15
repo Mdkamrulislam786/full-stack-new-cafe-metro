@@ -1,0 +1,147 @@
+#menuhome{
+    position: relative;
+    
+}
+
+/**backgrond-images**/
+.MenuHomeImg {
+    --bg-background: url(../../../../../assets/jonathan-borba-8l8Yl2ruUsg-unsplash.jpg) bottom;
+    background: var(--bg-background);
+}
+
+.environment {
+    background: url(../../../../../assets/table-in-vintage-restaurant-6267.jpg) bottom;
+}
+
+.chef {
+    background: url(../../../../../assets/chef-holding-white-tea-cup-887827.jpg) bottom;
+}
+
+.masterkitchen {
+    background: url(../../../../../assets/man-and-woman-wearing-black-and-white-striped-aprons-2696064.jpg) bottom;
+}
+
+.celebs {
+    background: url(../../../../../assets/adult-bar-beautiful-breakfast-321598.jpg) bottom;
+}
+
+.customer-reviews {
+    background: url(../../../../../assets/woman-eating-bruschetta-1537635.jpg) bottom;
+}
+
+/* Menu paragraph elements */
+.environment,
+.MenuHomeImg,
+.chef,
+.masterkitchen,
+.celebs,
+.customer-reviews > p {
+    text-decoration: none;
+    text-decoration-style: none;
+    color: #ffffff;
+    font-size: 5rem;
+    font-weight: 700;
+}
+
+
+
+/* Menu container */
+.MenuHomeImg,
+.environment,
+.chef,
+.masterkitchen,
+.celebs,
+.customer-reviews {
+    background-size: cover;
+    background-repeat: no-repeat;
+    max-width: 100vw;
+    height: 100vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 20px;
+
+}
+
+#menuhome h3 {
+    text-decoration: none;
+    text-decoration-style: none;
+    color: green;
+    font-size: 5rem;
+    font-weight: 700;
+
+}
+
+#menuhome h3:hover {
+    color: goldenrod;
+}
+a{
+text-decoration: none;
+text-decoration-style: none;
+color: #ffffff;
+}
+a:hover {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+a>p:hover{
+    color: rgb(255, 0, 0);
+}
+
+
+@media (min-width:320px) and (max-width:475px) {
+
+    .environment,
+    .MenuHomeImg,
+    .chef,
+    .masterkitchen,
+    .celebs,
+    .customer-reviews > p {
+        text-decoration: none;
+        color: #ffffff;
+        font-size: 2rem;
+        font-weight: 600;
+        text-decoration-style: none;
+    }
+
+    #menuhome h3 {
+        font-size: 2rem;
+        text-decoration-style: none;
+    }
+}
+@media (min-width:426px) and (max-width:768px) {
+    .environment,
+    .MenuHomeImg,
+    .chef,
+    .masterkitchen,
+    .celebs,
+    .customer-reviews > p {
+       
+        font-size: 4rem;
+        font-weight: 600;
+        
+    }
+
+    #menuhome h3 {
+        font-size: 3rem;
+       
+    }
+}
+
+@media (min-width:769px) and (max-width:1024px) {
+    .environment,
+    .MenuHomeImg,
+    .chef,
+    .masterkitchen,
+    .celebs,
+    .customer-reviews > p {
+        font-size: 4rem;
+    }
+
+    #menuhome h3 {
+        font-size: 3rem;
+    }
+}

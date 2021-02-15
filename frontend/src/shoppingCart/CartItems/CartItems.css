@@ -1,0 +1,30 @@
+.btn-black {
+    background: transparent;
+    text-transform: capitalize;
+    font-size: 0.8rem !important;
+    color: black;
+    border-radius: 0 !important;
+    border: 0.1rem solid black !important;
+}
+
+.btn-black:hover {
+    background: black;
+    color: white;
+}
+
+.cartImg {
+    object-fit: contain;
+    height: 50px;
+}
+
+.cart-icon>i {
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: yellow !important;
+}
+
+@media (min-width:320px) and (max-width:425px) {
+    .cartImg {
+        height: 30px !important;
+    }
+}

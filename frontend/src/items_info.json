@@ -1,0 +1,202 @@
+{
+    "cakesAndPastries": {
+            "pastries": [{
+                    "id": 1,
+                    "name": "Black forest",
+                    "img": "/images/pastry.jpg",
+                    "tagName": "choclateCake",
+                    "price": 220,
+                    "numbers": 0,
+                    "total":0,
+                    "inCart": false,
+                   "info":
+                    "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial."
+                },
+                { "id": 2,
+                    "name": "White Forest",
+                    "img": "/images/pastry.jpg",
+                    "tagName": "birthdayCake",
+                    "price": 350,
+                    "numbers": 0,
+                    "total":0,
+                    "inCart": false,
+                     "info":
+                    "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial."
+                },
+                { "id": 3,
+                    "name": "Swiss Roll",
+                    "img": "/images/pastry.jpg",
+                    "tagName": "doughnut",
+                    "price": 120,
+                    "numbers": 0,
+                    "total":0,
+                    "inCart": false,
+                     "info":
+                    "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial."
+                },
+                { "id": 4,
+                    "name": "Blueberry-Pastry",
+                    "img": "/images/pastry.jpg",
+                    "tagName": "pastry",
+                    "price": 90,
+                    "numbers": 0,
+                    "total":0,
+                    "inCart": false,
+                     "info":
+                    "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial."
+                }
+            ],
+        "cakes": [{ "id": 5,
+                "name": "Black forest",
+                "img": "/images/cake-2.jpeg",
+                "tagName": "choclateCake",
+                "price": 220,
+                "numbers": 0,
+                "total":0,
+                "inCart": false,
+                 "info":
+                    "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial."
+            },
+            { "id": 6,
+                "name": "White Forest",
+                "img": "/images/cake-2.jpeg",
+                "tagName": "birthdayCake",
+                "price": 350,
+                "numbers": 0,
+                "total":0,
+                "inCart": false,
+                 "info":
+                    "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial."
+            },
+            { "id": 7,
+                "name": "Swiss Roll",
+                "img": "/images/cake-2.jpeg",
+                "tagName": "doughnut",
+                "price": 120,
+                "numbers": 0,
+                "total":0,
+                "inCart": false,
+                 "info":
+                    "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial."
+            },
+            { "id": 8,
+                "name": "Blueberry-Pastry",
+                "img": "/images/cake-2.jpeg",
+                "tagName": "pastry",
+                "price": 90,
+                "numbers": 0,
+                "total":0,
+                "inCart": false,
+                 "info":
+                    "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial."
+            }]
+        },
+    
+    
+        "fastFoods": {
+            "burgers":[
+                { "id": 9,
+                    "name": "Chicken Burger",
+                    "img": "/images/burger.jpg",
+                    "tagName": "sweets",
+                    "price": 80,
+                    "numbers": 0,
+                    "total":0,
+                    "inCart": false,
+                     "info":
+                    "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial."
+                },
+                { "id": 10,
+                    "name": "Grilled Cheese Burger",
+                    "img": "/images/burger.jpg",
+                    "tagName": "sweets",
+                    "price": 90,
+                    "numbers": 0,
+                    "total":0,
+                    "inCart": false,
+                     "info":
+                    "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial."
+                },
+                { "id": 11,
+                    "name": "Vegitable burger",
+                    "img": "/images/burger.jpg",
+                    "tagName": "sweets",
+                    "price": 100,
+                    "numbers": 0,
+                    "total":0,
+                    "inCart": false,
+                     "info":
+                    "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial."
+                },
+                { "id": 12,
+                    "name": "Beef Burger",
+                    "img": "/images/burger.jpg",
+                    "tagName": "sweets",
+                    "price": 120,
+                    "numbers": 0,
+                    "total":0,
+                    "inCart": false,
+                     "info":
+                    "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial."
+                }
+            ],
+            "sandwiches":[
+                { "id": 13,
+                    "name": "Grilled Sandwich",
+                    "img": "/images/sandwich.jpg",
+                    "tagName": "sandwich",
+                    "price": 100,
+                    "numbers": 0,
+                    "total":0,
+                    "inCart": false,
+                     "info":
+                    "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial."
+                },
+                { "id": 14,
+                    "name": "Vegitable Sandwich",
+                    "img": "/images/sandwich.jpg",
+                    "tagName": "sandwich",
+                    "price": 60,
+                    "numbers": 0,
+                    "inCart": false,
+                     "info":
+                    "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial."
+                },
+                { "id": 15,
+                    "name": "Chicken Sandwich",
+                    "img": "/images/sandwich.jpg",
+                    "tagName": "sandwich",
+                    "price": 100,
+                    "numbers": 0,
+                    "total":0,
+                    "inCart": false,
+                     "info":
+                    "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial."
+                },
+                { "id": 16,
+                    "name": "Cheese Sandwich",
+                    "img": "/images/sandwich.jpg",
+                    "tagName": "sandwich",
+                    "price": 100,
+                    "numbers": 0,
+                    "total":0,
+                    "inCart": false,
+                     "info":
+                    "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial."
+                }
+            ] 
+        },
+        "detailItem":{
+                   "id": 16,
+                    "name": "Cheese Sandwich",
+                    "img": "/images/sandwich.jpg",
+                    "tagName": "sandwich",
+                    "price": 100,
+                    "numbers": 0,
+                    "total":0,
+                    "inCart": false,
+                     "info":
+                    "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial."
+        }
+    
+}

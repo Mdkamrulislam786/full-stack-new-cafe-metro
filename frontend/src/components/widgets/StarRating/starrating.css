@@ -1,0 +1,26 @@
+.star{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    background: url(../../../assets//adult-bar-beautiful-breakfast-321598.jpg) bottom;
+    background-size: contain;
+    height: 100vmin;
+   
+    
+}
+.star h2 {
+    font-size: 4rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+.star h2:hover {
+    color: rgb(0, 255, 0);
+}
+
+@media (min-width:320px)  and (max-width:425px){
+    .star h2{
+        font-size: 2.5rem;
+    }
+}

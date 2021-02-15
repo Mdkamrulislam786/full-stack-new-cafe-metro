@@ -1,0 +1,43 @@
+.order,
+.OrderComplete {
+    padding: 2rem 0;
+
+}
+
+.order__address,
+.OrderComplete__msg {
+    padding: 7px;
+    background-color: #eee;
+}
+
+.OrderComplete__msg {
+    text-align: center;
+    align-items: center;
+}
+
+.order__address h5,
+.order__items h5 {
+    color: green;
+    font-weight: 600;
+    padding-bottom: 1rem;
+}
+
+.order__address p {
+    font-weight: 400;
+    padding-bottom: 2px;
+    color: green;
+}
+
+.order__address span {
+    color: black;
+}
+
+.order__button {
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.order__img {
+    object-fit: contain;
+    height: 30px;
+}

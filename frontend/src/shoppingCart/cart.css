@@ -1,0 +1,20 @@
+.text-title {
+    font-size: 24px;
+    font-weight: 600;
+    font-style: italic;
+    font-family: "Robotto Condensed", sans-serif;
+    text-transform: capitalize;
+    color: #000000;
+}
+
+
+@media (min-width:320px) and (max-width:480px) {
+    .cart-col-p {
+        font-size: 10px !important;
+    }
+
+    .text-title {
+        font-size: 14px;
+        font-weight: 400;
+    }
+}

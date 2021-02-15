@@ -1,0 +1,25 @@
+.Collections {
+    padding: 2rem 0;
+}
+
+.Collections a {
+    text-decoration: none;
+    color: #000;
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: lightgreen;
+    margin-right: 2px;
+    border-radius: 3px;
+}
+
+.Collections a:hover {
+    /* border-bottom: 3px solid #000; */
+    background-color: green;
+}
+
+.Collections a:focus {
+    color: #fff;
+    background-color: green;
+    /* border-bottom: 3px solid #000; */
+    transform: all .7s ease-in-out;
+}

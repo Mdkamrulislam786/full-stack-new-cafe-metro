@@ -1,0 +1,101 @@
+#home {
+    position: relative;
+
+}
+
+.jumbo {
+    background: url(../../../../assets//rice.jpg)fixed bottom;
+    background-size: cover;
+    position: relative;
+    color: #efefef;
+    min-width: 100%;
+    height: 100vh;
+    text-align: center;
+    align-items: center;
+    padding-top: 10rem;
+    z-index: 1;
+
+}
+
+.overlay {
+    background-color: #000000;
+    position: absolute;
+    opacity: 0.1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+
+
+.jumbo h1 {
+    position: relative;
+    color: rgb(37, 235, 37);
+    font-size: 8rem;
+    font-weight: 700;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: italic;
+
+}
+
+.jumbo.detail {
+    color: #4C4C4C;
+}
+
+span.name {
+    color: red;
+}
+
+.jumbo .rotate {
+    position: absolute;
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-size: 30px;
+    font-style: oblique;
+    left: 300px;
+    color: #fff;
+    transform: rotate(-20deg);
+}
+
+.jumbo p {
+    font-size: 40px;
+    font-weight: 700;
+    color: #efefef;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+@media (min-width:320px) and (max-width:425px) {
+    .jumbo h1 {
+        font-size: 5rem;
+
+    }
+
+    .jumbo p {
+        font-size: 30px;
+
+    }
+
+    .jumbo .rotate {
+        position: absolute;
+        font-weight: 600;
+        font-size: 25px;
+        font-style: oblique;
+        left: 40px;
+        color: #fff;
+        transform: rotate(-20deg);
+    }
+}
+
+@media (min-width:426px) and (max-width:768px) {
+    .jumbo .rotate {
+        font-size: 30px;
+        left: 40px;
+    }
+}
+
+@media (min-width:769px) and (max-width:1024px) {
+    .jumbo .rotate {
+        left: 130px;
+    }
+}

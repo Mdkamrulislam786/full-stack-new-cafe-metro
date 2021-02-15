@@ -1,0 +1,173 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", "sans-serif";
+}
+
+/* Navbar */
+.header .detail {
+  background-color: rgba(0, 0, 0, 0.719);
+  height: 3rem;
+  align-items: center;
+}
+
+.App .header {
+  background-image: url(./images/pastries.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  max-width: 100%;
+  height: 150px;
+  position: relative;
+}
+
+.overlay {
+  background: rgba(10, 10, 10, 0.3);
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+
+
+.header {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 40px 60px 0 60px;
+}
+
+h2 {
+  font-size: 40px;
+  font-weight: 600;
+  color: #53e9dd;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.header h1 {
+  color: rgb(7, 255, 7);
+}
+
+.header li {
+  position: absolute;
+  top: 2rem;
+  right: 6rem;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: rgb(0, 0, 0);
+  list-style: none;
+  display: inline-block;
+  padding: 5px;
+}
+
+.header .main-menu {
+  position: absolute;
+  top: 0;
+  right: 4rem;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: rgb(0, 0, 0);
+  list-style: none;
+  display: inline-block;
+  padding: 10px;
+}
+
+.header li a {
+  font-size: 20px;
+  text-decoration: none;
+  color: #53e9dd;
+}
+
+.container-menu,
+.container-products {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 50px;
+  padding-bottom: 20px;
+
+}
+
+.images {
+  margin-right: 10px;
+  margin-left: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.image {
+  max-width: 100%;
+  height: 200px;
+  border: 1px solid #fff;
+  border-radius: 5px;
+}
+
+
+/* ADD TO CART BUTTON */
+.menuitem {
+  margin-bottom: 1rem;
+}
+
+.menuitem__buttons {
+  align-items: center;
+  text-align: center;
+}
+
+.menuitem__buttons .btn-group>button {
+  margin: 0 1px 0 0 !important;
+  padding: 4px !important;
+}
+
+@media (max-width:500px) {
+  nav h2 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .sm-hide {
+    display: none;
+  }
+
+  .product,
+  .product-header {
+    justify-content: center;
+  }
+
+  .basketTotalContainer {
+    padding-right: 8%;
+  }
+
+  .header h1 {
+    display: none;
+  }
+
+  .images h3 {
+    font-size: 20px;
+    font-weight: 400;
+  }
+}
+
+@media (min-width:320px) and (max-width:768px) {
+  .image {
+    max-width: 200px;
+    height: 100px;
+  }
+}
+
+@media (min-width:769px) and (max-width:1280px) {
+  .image {
+    max-width: 200px;
+    height: 200px;
+  }
+}
