@@ -11,6 +11,7 @@ import Checkout from "./shoppingCart/Checkout/Checkout";
 import Cart from "./shoppingCart/cart";
 import { useDispatch, useSelector } from "react-redux";
 import { isUserLoggedIn, updateCart } from "./actions";
+import MenuItems from "./shoppingCart/MenuItems";
 
 const ShoppingCart = () => {
   const dispatch = useDispatch();
@@ -19,12 +20,12 @@ const ShoppingCart = () => {
     if (!auth.authenticate) {
       dispatch(isUserLoggedIn());
     }
-  }, [dispatch,auth.authenticate]);
+  }, [dispatch, auth.authenticate]);
 
   useEffect(() => {
     console.log("App.js - updateCart");
     dispatch(updateCart());
-  }, [dispatch,auth.authenticate]);
+  }, [dispatch, auth.authenticate]);
 
   return (
     <div className="App">
@@ -36,6 +37,7 @@ const ShoppingCart = () => {
           <Route path="/checkout" exact component={Checkout} />
           <Route path="/order" exact component={Order} />
           <Route path="/order-completed" exact component={OrderCompleted} />
+          <Route path="/shop/:slug" exact component={MenuItems} />
         </Switch>
         <ModalButton />
       </BrowserRouter>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import MenuItems from "./MenuItems";
 import "./testmenu.css";
 // import burger from "../images/burger.jpg";
@@ -9,11 +9,12 @@ import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllCategory } from "../actions";
 import { Fragment } from "react";
+import { useHistory } from "react-router-dom";
 
 const TestMenu = () => {
   //GET ALL CATEGORIES WHEN RENDERED
   const category = useSelector((state) => state.category);
-  console.log(category);
+  const history = useHistory();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllCategory());
@@ -30,14 +31,14 @@ const TestMenu = () => {
     }
     return parentCategories;
   };
+
   const renderChildrenCategories = (categories) => {
-    console.log(categories);
+
     return categories.map((category, i) => (
       <Tab.Pane key={i} eventKey={category.name}>
         {category.children.map((cat, i) => (
           <Fragment key={i}>
-            <h2>{cat.name}</h2>
-            <Row>{<MenuItems slug={cat.slug} />}</Row>
+            <h2 onClick={() => history.push(`/shop/${cat.slug}`)}>{cat.name}</h2>
           </Fragment>
         ))}
       </Tab.Pane>

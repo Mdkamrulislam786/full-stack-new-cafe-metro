@@ -12,6 +12,7 @@ import Wedding from "./components/Home/Body/Menu/OurServices/services/Wedding";
 import OurStory from "./components/Home/Body/Menu/OurServices/services/OurStory";
 import TestMenu from "./shoppingCart/TestMenu";
 import Profile from "./components/Home/Profile/Profile";
+import MenuItems from "./shoppingCart/MenuItems";
 
 class Routes extends Component {
   render() {
@@ -25,8 +26,8 @@ class Routes extends Component {
           <Route path="/Catering-services" exact component={Catering} />
           <Route path="/Wedding-services" exact component={Wedding} />
           <Route path="/our-story" exact component={OurStory} />
-          <Route path="/testmenu" exact component={TestMenu} />
           <Route path="/profile" exact component={Profile} />
+          <Route path="/shop/:slug" exact component={MenuItems} />
         </Switch>
       </Layout>
     );
