@@ -6,6 +6,7 @@ import { addToCart, getProductsBySlug } from "../actions";
 import { generatePublicUrl } from "../urlConfig";
 import { Link } from "react-router-dom";
 import { Modal, Image } from "react-bootstrap";
+import Navbar from "./Navbar";
 
 const MenuItems = () => {
   const product = useSelector((state) => state.product);
@@ -30,72 +31,78 @@ const MenuItems = () => {
 
   return (
     <>
-      <Container>
-        <h2>{param.slug}</h2>
-        <Row>
-          {product?.products.map((prod, i) => {
-            const { _id, name, price, description } = prod;
-            const img = prod.productPictures[0].img;
-            return (
-              <Col key={i} xs={6} md={3} lg={3} xl={3}>
-                <div className="menuitem">
-                  <div className="images">
-                    <img
-                      className="image"
-                      src={generatePublicUrl(img)}
-                      alt="img"
-                    />
-                    <div className="menuitem__buttons">
-                      <ButtonGroup size="sm">
-                        {/* onClick={props.itemInfo} */}
-                        <Button
-                          variant="info"
-                          onClick={() => {
-                            setModalInfo({
-                              ...modalInfo,
-                              _id,
-                              name,
-                              price,
-                              img,
-                              description,
-                            });
-                            setShow(true);
+      <Navbar />
+      <div style={{ margin: "7rem auto 3rem auto" }}>
+        <Container>
+          <h2>{param.slug}</h2>
+          <Row>
+            {product?.products.map((prod, i) => {
+              const { _id, name, price, description } = prod;
+              const img = prod.productPictures[0].img;
+              return (
+                <Col key={i} xs={6} md={3} lg={3} xl={3}>
+                  <div className="menuitem">
+                    <div className="images">
+                      <img
+                        className="image"
+                        src={generatePublicUrl(img)}
+                        alt="img"
+                      />
+                      <div className="menuitem__buttons">
+                        <ButtonGroup size="sm">
+                          {/* onClick={props.itemInfo} */}
+                          <Button
+                            variant="info"
+                            onClick={() => {
+                              setModalInfo({
+                                ...modalInfo,
+                                _id,
+                                name,
+                                price,
+                                img,
+                                description,
+                              });
+                              setShow(true);
+                            }}
+                          >
+                            <i
+                              className="fa fa-info-circle"
+                              aria-hidden="true"
+                            />
+                            Info
+                          </Button>
+                          {/* onClick=ADD TO CART */}
+                          <Button
+                            variant="success"
+                            onClick={() => {
+                              dispatch(addToCart({ _id, name, price, img }));
+                            }}
+                          >
+                            <i className="fas fa-shopping-cart" />
+                            Add
+                          </Button>
+                        </ButtonGroup>
+                      </div>
+                      <span className="images__h3">
+                        <h5 style={{ textAlign: "center" }}>{name}</h5>
+                        <h5
+                          style={{
+                            color: "green",
+                            textAlign: "center",
+                            fontSize: "16px",
                           }}
                         >
-                          <i className="fa fa-info-circle" aria-hidden="true" />
-                          Info
-                        </Button>
-                        {/* onClick={props.addItem} */}
-                        <Button
-                          variant="success"
-                          onClick={() => {
-                            // dispatch(addToCart({ _id, name, price, img }));
-                          }}
-                        >
-                          <i className="fas fa-shopping-cart" />
-                          Add
-                        </Button>
-                      </ButtonGroup>
+                          Price: {price}tk
+                        </h5>
+                      </span>
                     </div>
-                    <span className="images__h3">
-                      <h5 style={{ textAlign: "center" }}>{name}</h5>
-                      <h5
-                        style={{
-                          color: "green",
-                          textAlign: "center",
-                          fontSize: "16px",
-                        }}
-                      >
-                        Price: {price}tk
-                      </h5>
-                    </span>
                   </div>
-                </div>
-              </Col>
-            );
-          })}
-        </Row>
-      </Container>
+                </Col>
+              );
+            })}
+          </Row>
+        </Container>
+      </div>
       <Modal show={show} onHide={handleClose} size="sm" centered>
         <Modal.Header>
           <Modal.Title>
@@ -114,17 +121,11 @@ const MenuItems = () => {
           <h5 className="text-center">{name}</h5>
           <h5 className="text-muted text-center">Price: {price} $</h5>
           <div className="d-flex flex-column justify-content-center align-center">
-            <div
-              // onClick={() => this.props.closeModal(id)}
-              className="text-center align-center"
-            ></div>
+            <div className="text-center align-center"></div>
             <div style={{ textAlign: "center" }}>
               <p>{description}</p>
             </div>
-            <div
-              // onClick={() => this.props.closeModal(id)}
-              className="text-center align-center"
-            >
+            <div className="text-center align-center">
               <Button variant="dark" as={Link} to="/shop">
                 Continue Shopping
               </Button>
@@ -137,39 +138,3 @@ const MenuItems = () => {
 };
 
 export default MenuItems;
-
-//  <div className="menuitem">
-//    <div className="images">
-//      <img
-//        className="image"
-//        src={generatePublicUrl(product.productPictures[0].img)}
-//        alt="img"
-//      />
-//      <div className="menuitem__buttons">
-//        <ButtonGroup size="sm">
-//          {/* onClick={props.itemInfo} */}
-//          <Button variant="info">
-//            <i className="fa fa-info-circle" aria-hidden="true" />
-//            Info
-//          </Button>
-//          {/* onClick={props.addItem} */}
-//          <Button variant="success">
-//            <i className="fas fa-shopping-cart" />
-//            Add
-//          </Button>
-//        </ButtonGroup>
-//      </div>
-//      <span className="images__h3">
-//        <h5 style={{ textAlign: "center" }}>{product.name}</h5>
-//        <h5
-//          style={{
-//            color: "green",
-//            textAlign: "center",
-//            fontSize: "16px",
-//          }}
-//        >
-//          Price: {product.price}tk
-//        </h5>
-//      </span>
-//    </div>
-//  </div>;

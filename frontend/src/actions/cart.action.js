@@ -35,6 +35,7 @@ export const addToCart = (product, newQty = 1) => {
     const qty = cartItems[product._id]
       ? parseInt(cartItems[product._id].qty + newQty)
       : 1;
+    const price = qty * product.price;
     cartItems[product._id] = {
       ...product,
       qty,
@@ -49,14 +50,12 @@ export const addToCart = (product, newQty = 1) => {
         //         product: cartItems[key]._id
         //     }
         // })
-        cartItems: [
-          {
-            product: product._id,
-            quantity: qty,
-          },
-        ],
+        cartItems: [{
+          product: product._id,
+          quantity: qty,
+        }],
       };
-      console.log(payload);
+      console.log("cart-payload", payload);
       const res = await axios.post(`/user/cart/addtocart`, payload);
       console.log(res);
       if (res.status === 201) {

@@ -13,6 +13,12 @@ import OurStory from "./components/Home/Body/Menu/OurServices/services/OurStory"
 import TestMenu from "./shoppingCart/TestMenu";
 import Profile from "./components/Home/Profile/Profile";
 import MenuItems from "./shoppingCart/MenuItems";
+import CheckoutPage from "./shoppingCart/CheckoutPage";
+import OrderDetailsPage from "./shoppingCart/OrderDetailsPage";
+import OrderPage from "./shoppingCart/OrderPage";
+import Cart from "./shoppingCart/cart";
+import Order from "./shoppingCart/Order/Order";
+import OrderCompleted from "./shoppingCart/Order/OrderCompleted";
 
 class Routes extends Component {
   render() {
@@ -27,6 +33,12 @@ class Routes extends Component {
           <Route path="/Wedding-services" exact component={Wedding} />
           <Route path="/our-story" exact component={OurStory} />
           <Route path="/profile" exact component={Profile} />
+          <Route path="/checkout" component={CheckoutPage} />
+          <Route path="/account/orders" component={OrderPage} />
+          <Route path="/order_details/:orderId" component={OrderDetailsPage} />
+          <Route path="/Cart" exact component={Cart} />
+          <Route path="/order" exact component={Order} />
+          <Route path="/order-completed" exact component={OrderCompleted} />
           <Route path="/shop/:slug" exact component={MenuItems} />
         </Switch>
       </Layout>

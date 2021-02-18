@@ -68,9 +68,6 @@ const SideNavItems = () => {
         <i className="fas fa-id-card-alt icon" />
         Profile
       </Nav.Link>
-      <Nav.Link as={Link} to="/profile/orders">
-        <i className="fas fa-id-card-alt icon" /> Orders
-      </Nav.Link>
       <Nav.Link
         onClick={() => {
           logout();

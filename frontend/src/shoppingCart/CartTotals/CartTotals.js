@@ -3,8 +3,7 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 
-const CartTotals = () => {
-  // const { cartTotal } = value;
+const CartTotals = ({ totalPrice }) => {
   return (
     <Fragment>
       <Container className="d-flex justify-content-end">
@@ -20,7 +19,7 @@ const CartTotals = () => {
             </Link>
             <h5 className="text-title d-flex justify-content-end mb-3 px-5">
               <span>Total : </span>
-              <strong>12 tk</strong>
+              <strong>{totalPrice} tk</strong>
             </h5>
             <div className="d-flex justify-content-center  mb-3">
               <Button as={Link} to="/checkout" variant="success">

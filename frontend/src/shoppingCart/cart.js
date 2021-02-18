@@ -1,18 +1,78 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import EmptyCart from "./EmptyCart/EmptyCart";
-import CartList from "./CartList/CartList";
 import CartColumns from "./CartColumns/CartColumns";
 import CartTotals from "./CartTotals/CartTotals";
 import "./cart.css";
+import CartItems from "./CartItems/CartItems";
+//REDUX
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, getCartItems, removeCartItem } from "../actions";
+import { Container } from "react-bootstrap";
+import Navbar from "./Navbar";
 
 const Cart = (props) => {
-  // const { cart } = props.testReducer;
-  let cart = [0, 1];
+  const cart = useSelector((state) => state.cart);
+  const auth = useSelector((state) => state.auth);
+  // const cartItems = cart.cartItems;
+  const [cartItems, setCartItems] = useState(cart.cartItems);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    setCartItems(cart.cartItems);
+  }, [cart.cartItems]);
+
+  useEffect(() => {
+    if (auth.authenticate) {
+      dispatch(getCartItems());
+    }
+  }, [auth.authenticate]);
+
+  const onQuantityIncrement = (_id, qty) => {
+    const { name, price, img } = cartItems[_id];
+    dispatch(addToCart({ _id, name, price, img }, 1));
+  };
+
+  const onQuantityDecrement = (_id, qty) => {
+    const { name, price, img } = cartItems[_id];
+    dispatch(addToCart({ _id, name, price, img }, -1));
+  };
+
+  const onRemoveCartItem = (_id) => {
+    dispatch(removeCartItem({ productId: _id }));
+  };
+
+    if (props.onlyCartItems) {
+      return (
+        <>
+          {Object.keys(cartItems).map((key, index) => (
+            <CartItems
+              key={index}
+              cartItem={cartItems[key]}
+              onQuantityInc={onQuantityIncrement}
+              onQuantityDec={onQuantityDecrement}
+              keepRemove
+            />
+          ))}
+        </>
+      );
+    }
+
   const showCart = () => {
-    if (cart.length > 0) {
+    if (
+      Object.keys(cartItems).length === 0 &&
+      cartItems.constructor === Object
+    ) {
+      return (
+        <>
+          <Navbar />
+          <EmptyCart />
+        </>
+      )
+    } else {
       return (
         <Fragment>
-          <div>
+          <Navbar />
+          <div style={{ margin: "7rem auto 2rem auto" }}>
             <h2
               style={{
                 textAlign: "center",
@@ -25,12 +85,28 @@ const Cart = (props) => {
             </h2>
           </div>
           <CartColumns />
-          <CartList />
-          <CartTotals />
+          <Container fluid>
+            {Object.keys(cartItems).map((key, index) => (
+              <CartItems
+                key={index}
+                cartItem={cartItems[key]}
+                onQuantityInc={onQuantityIncrement}
+                onQuantityDec={onQuantityDecrement}
+                onRemoveCartItem={onRemoveCartItem}
+              />
+            ))}
+          </Container>
+          <CartTotals
+            totalPrice={Object.keys(cart.cartItems).reduce(
+              (totalPrice, key) => {
+                const { price, qty } = cart.cartItems[key];
+                return totalPrice + price * qty;
+              },
+              0
+            )}
+          />
         </Fragment>
       );
-    } else {
-      return <EmptyCart />;
     }
   };
   return <section>{showCart()}</section>;

@@ -20,7 +20,7 @@
 .cart-icon>i {
     cursor: pointer;
     font-size: 1.2rem;
-    color: yellow !important;
+    color: red !important;
 }
 
 @media (min-width:320px) and (max-width:425px) {

@@ -29,18 +29,9 @@ const ShoppingCart = () => {
 
   return (
     <div className="App">
-      <BrowserRouter>
-        <Navbar />
-        <Switch>
-          <Route path="/shop" exact component={TestMenu} />
-          <Route path="/Cart" exact component={Cart} />
-          <Route path="/checkout" exact component={Checkout} />
-          <Route path="/order" exact component={Order} />
-          <Route path="/order-completed" exact component={OrderCompleted} />
-          <Route path="/shop/:slug" exact component={MenuItems} />
-        </Switch>
-        <ModalButton />
-      </BrowserRouter>
+      <Navbar />
+      <TestMenu />
+      <ModalButton />
     </div>
   );
 };

@@ -19,7 +19,7 @@ const TestMenu = () => {
   useEffect(() => {
     dispatch(getAllCategory());
   }, [dispatch]);
-
+  let defaultKey = category.categories[0];
   const renderParentCategories = (categories) => {
     let parentCategories = [];
     for (let category of categories) {
@@ -33,12 +33,13 @@ const TestMenu = () => {
   };
 
   const renderChildrenCategories = (categories) => {
-
     return categories.map((category, i) => (
       <Tab.Pane key={i} eventKey={category.name}>
         {category.children.map((cat, i) => (
           <Fragment key={i}>
-            <h2 onClick={() => history.push(`/shop/${cat.slug}`)}>{cat.name}</h2>
+            <h2 onClick={() => history.push(`/shop/${cat.slug}`)}>
+              {cat.name}
+            </h2>
           </Fragment>
         ))}
       </Tab.Pane>
@@ -49,7 +50,7 @@ const TestMenu = () => {
   return (
     <div className="Collections">
       <Container>
-        <Tab.Container defaultActiveKey="first">
+        <Tab.Container defaultActiveKey={defaultKey?.name}>
           <Row>
             <Col>
               <Nav className="d-flex flex-row justify-content-center text-center">
