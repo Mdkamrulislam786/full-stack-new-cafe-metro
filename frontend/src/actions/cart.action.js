@@ -2,6 +2,7 @@ import axios from "../helpers/axios";
 import { cartConstants } from "./constants";
 import store from "../store";
 
+//GET CART ITEMS
 const getCartItems = () => {
   return async (dispatch) => {
     try {
@@ -22,7 +23,7 @@ const getCartItems = () => {
     }
   };
 };
-
+//ADD TO CART
 export const addToCart = (product, newQty = 1) => {
   return async (dispatch) => {
     const {
@@ -35,7 +36,6 @@ export const addToCart = (product, newQty = 1) => {
     const qty = cartItems[product._id]
       ? parseInt(cartItems[product._id].qty + newQty)
       : 1;
-    const price = qty * product.price;
     cartItems[product._id] = {
       ...product,
       qty,
@@ -73,7 +73,7 @@ export const addToCart = (product, newQty = 1) => {
     });
   };
 };
-
+//REMOVE CART ITEMS
 export const removeCartItem = (payload) => {
   return async (dispatch) => {
     try {
@@ -94,7 +94,7 @@ export const removeCartItem = (payload) => {
     }
   };
 };
-
+//UPDATE CART ITEMS
 export const updateCart = () => {
   return async (dispatch) => {
     const { auth } = store.getState();

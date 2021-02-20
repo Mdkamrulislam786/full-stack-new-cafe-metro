@@ -14,19 +14,7 @@ import { isUserLoggedIn, updateCart } from "./actions";
 import MenuItems from "./shoppingCart/MenuItems";
 
 const ShoppingCart = () => {
-  const dispatch = useDispatch();
-  const auth = useSelector((state) => state.auth);
-  useEffect(() => {
-    if (!auth.authenticate) {
-      dispatch(isUserLoggedIn());
-    }
-  }, [dispatch, auth.authenticate]);
-
-  useEffect(() => {
-    console.log("App.js - updateCart");
-    dispatch(updateCart());
-  }, [dispatch, auth.authenticate]);
-
+ 
   return (
     <div className="App">
       <Navbar />

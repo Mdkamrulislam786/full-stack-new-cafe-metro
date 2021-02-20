@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 
 //COMPONENTS
@@ -19,9 +19,22 @@ import OrderPage from "./shoppingCart/OrderPage";
 import Cart from "./shoppingCart/cart";
 import Order from "./shoppingCart/Order/Order";
 import OrderCompleted from "./shoppingCart/Order/OrderCompleted";
+import { useDispatch, useSelector } from "react-redux";
+import { isUserLoggedIn, updateCart } from "./actions";
 
-class Routes extends Component {
-  render() {
+const Routes =()=>{
+   const dispatch = useDispatch();
+   const auth = useSelector((state) => state.auth);
+   useEffect(() => {
+     if (!auth.authenticate) {
+       dispatch(isUserLoggedIn());
+     }
+   }, [dispatch, auth.authenticate]);
+
+   useEffect(() => {
+     console.log("App.js - updateCart");
+     dispatch(updateCart());
+   }, [dispatch, auth.authenticate]);
     return (
       <Layout>
         <Switch>
@@ -42,8 +55,7 @@ class Routes extends Component {
           <Route path="/shop/:slug" exact component={MenuItems} />
         </Switch>
       </Layout>
-    );
-  }
+    )
 }
 
 export default Routes;
