@@ -3,11 +3,13 @@ import { Nav, Row, Tab, Col, Container } from "react-bootstrap";
 import AccountInfo from "./AccountInfo";
 import Orders from "./Orders/insex";
 import "./Profile.css";
+
 const Profile = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
   return (
     <div className="profile">
       <div className="profile__name">
-        <h1>Welcome John</h1>
+        <h3>Welcome {user.firstName}</h3>
         <p>You can check your order history & profile info here</p>
       </div>
       <Container>
@@ -26,10 +28,10 @@ const Profile = () => {
             <Col sm={9}>
               <Tab.Content>
                 <Tab.Pane eventKey="first">
-                  <AccountInfo />
+                  <AccountInfo user={user} />
                 </Tab.Pane>
                 <Tab.Pane eventKey="second">
-                 <Orders/>
+                  <Orders userName={user.firstName} />
                 </Tab.Pane>
               </Tab.Content>
             </Col>

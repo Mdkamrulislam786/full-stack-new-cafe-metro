@@ -192,15 +192,6 @@ const SideNavItems = () => {
                   }}
                   onClick={userLogin}
                 />
-                <p style={{ textAlign: "center" }}>OR</p>
-                <MaterialButton
-                  title="Request OTP"
-                  bgColor="#ffffff"
-                  textColor="#2874f0"
-                  style={{
-                    margin: "20px 0",
-                  }}
-                />
               </div>
             </div>
           </div>

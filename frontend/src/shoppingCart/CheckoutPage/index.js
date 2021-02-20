@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col} from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { addOrder, getAddress, getCartItems } from "../../actions";
-
+import { addOrder, getAddress, getCartItems, login } from "../../actions";
 import {
   Anchor,
   MaterialButton,
@@ -12,14 +11,8 @@ import PriceDetails from "../../components/PriceDetails";
 import Card from "../../components/UI/Card";
 import Cart from "../cart";
 import AddressForm from "./AddressForm";
-
 import "./style.css";
-
-/**
- * @author
- * @function CheckoutPage
- **/
-
+//*********************************************//
 const CheckoutStep = (props) => {
   return (
     <div className="checkoutStep">
@@ -107,6 +100,8 @@ const CheckoutPage = (props) => {
   const [orderConfirmation, setOrderConfirmation] = useState(false);
   const [paymentOption, setPaymentOption] = useState(false);
   const [confirmOrder, setConfirmOrder] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
@@ -192,6 +187,10 @@ const CheckoutPage = (props) => {
     }
   }, [user.placedOrderId]);
 
+  const userLogin = () => {
+    dispatch(login({ email, password }));
+  };
+
   return (
     <Container>
       <Row>
@@ -212,7 +211,25 @@ const CheckoutPage = (props) => {
                   </div>
                 ) : (
                   <div>
-                    <MaterialInput label="Email" />
+                      <MaterialInput
+                        label="Email"
+                        type="text"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                      />
+                      <MaterialInput
+                        label="Password"
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                      />
+                      <MaterialButton
+                        title="LOGIN"
+                        onClick={userLogin}
+                        style={{
+                          width: "200px",
+                        }}
+                      />
                   </div>
                 )
               }
@@ -258,7 +275,7 @@ const CheckoutPage = (props) => {
               active={orderSummary}
               body={
                 orderSummary ? (
-                 <Cart onlyCartItems={true}/>
+                  <Cart onlyCartItems={true} />
                 ) : orderConfirmation ? (
                   <div className="stepCompleted">
                     {Object.keys(cart.cartItems).length} items

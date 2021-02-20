@@ -53,14 +53,14 @@ const CartItems = ({ cartItem, onQuantityInc, onQuantityDec, ...props }) => {
           </div>
         </Col>
         <Col xs={2} className="mx-auto">
-          {props.keepRemove ? null : (
+        
             <div
               className="cart-icon"
               onClick={() => props.onRemoveCartItem(_id)}
             >
               <i className="fas fa-trash"></i>
             </div>
-          )}
+      
         </Col>
         <Col xs={2} className="mx-auto">
           {price * qty} $
