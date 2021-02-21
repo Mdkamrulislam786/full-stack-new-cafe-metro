@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateOrder } from "../../actions";
 import Layout from "../../components/Layout";
@@ -7,9 +8,12 @@ import "./style.css";
 
 const Orders = (props) => {
   const order = useSelector((state) => state.order);
-  console.log(order);
   const [type, setType] = useState("");
   const dispatch = useDispatch();
+  const [searchTerm, setSearchTerm] = useState("");
+  const [orderList, setOrderLists] = useState([]);
+  const [filteredOrders, setFilteredOrders] = useState([]);
+  console.log("orders", orderList);
 
   const onOrderUpdate = (orderId) => {
     const payload = {
@@ -27,9 +31,39 @@ const Orders = (props) => {
     return "";
   };
 
+  useEffect(() => {
+    let orders = order.orders;
+    setOrderLists(orders);
+  }, []);
+
+  useEffect(() => {
+    setFilteredOrders(
+      orderList?.reverse().filter((order) => {
+        return order._id.toString()?.toLowerCase().includes(searchTerm?.toLowerCase());
+      })
+    );
+  }, [searchTerm, orderList]);
+
+ const handleSearch = (event) => {
+   event.preventDefault();
+ };
   return (
     <Layout sidebar>
-      {order.orders.map((orderItem, index) => (
+      <div className="searchOrder">
+        <div onSubmit={handleSearch} className="search">
+          <form className="searchform">
+            <input
+              className="search__input"
+              type="text"
+              placeholder="order num..."
+              value={searchTerm}
+              onChange={(event) => setSearchTerm(event.target.value)}
+            />
+            <i className="fas fa-search" style={{ color: "#2167b9" }}></i>
+          </form>
+        </div>
+      </div>
+      {filteredOrders.map((orderItem, index) => (
         <Card
           style={{
             margin: "10px 0",
@@ -46,17 +80,18 @@ const Orders = (props) => {
             }}
           >
             <div>
-              <div className="title">Items</div>
+              <span className="title">Items</span>
               {orderItem.items.map((item, index) => (
                 <div className="value" key={index}>
                   {item.productId?.name}
+                  --{`(q-${item.purchasedQty} * p:${item.payablePrice}tk)`}
                 </div>
               ))}
             </div>
             <div>
               <span className="title">Total Price</span>
               <br />
-              <span className="value">{orderItem.totalAmount}</span>
+              <span className="value">{orderItem.totalAmount}tk</span>
             </div>
             <div>
               <span className="title">Payment Type</span> <br />
@@ -70,7 +105,7 @@ const Orders = (props) => {
           <div
             style={{
               display: "flex",
-              justifyContent: "space-between",
+              justifyContent: "flex-start",
               padding: "10px",
               alignItems: "center",
             }}
@@ -87,8 +122,9 @@ const Orders = (props) => {
             }}
           >
             <div className="orderTrack">
-              {orderItem.orderStatus.map((status) => (
+              {orderItem.orderStatus.map((status, i) => (
                 <div
+                  key={i}
                   className={`orderStatus ${
                     status.isCompleted ? "active" : ""
                   }`}
@@ -113,15 +149,15 @@ const Orders = (props) => {
             >
               <select onChange={(e) => setType(e.target.value)}>
                 <option value={""}>select status</option>
-                {orderItem.orderStatus.map((status) => {
+                {orderItem.orderStatus.map((status, i) => {
                   return (
-                    <>
+                    <Fragment key={i}>
                       {!status.isCompleted ? (
                         <option key={status.type} value={status.type}>
                           {status.type}
                         </option>
                       ) : null}
-                    </>
+                    </Fragment>
                   );
                 })}
               </select>

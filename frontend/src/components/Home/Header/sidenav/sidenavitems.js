@@ -6,12 +6,10 @@ import {
   Modal,
   MaterialInput,
   MaterialButton,
-  DropdownMenu,
 } from "../../../MaterialUI";
 import {
   login,
   signout,
-  getCartItems,
   signup as _signup,
 } from "../../../../actions";
 import { useDispatch, useSelector } from "react-redux";
@@ -127,6 +125,7 @@ const SideNavItems = () => {
               <i className="fas fa-ring icon"></i> Wedding services
             </NavDropdown.Item>
           </NavDropdown>
+
           <Nav.Link as={Link} to="/our-story">
             <i className="fas fa-user" /> Our Story
           </Nav.Link>

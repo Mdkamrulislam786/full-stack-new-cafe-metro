@@ -24,7 +24,7 @@ const Orders = ({ userName }) => {
           </tr>
         </thead>
         <tbody>
-          {user.orders.map((order, i) => (
+          {user.orders.reverse().map((order, i) => (
             <tr key={i}>
               <td> {order._id} </td>
               <td> {userName} </td>

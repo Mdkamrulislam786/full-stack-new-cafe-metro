@@ -34,7 +34,6 @@ function App() {
         <PrivateRoute path="/category" component={Category} />
         <PrivateRoute path="/products" component={Products} />
         <PrivateRoute path="/orders" component={Orders} />
-
         <Route path="/signin" component={Signin} />
         <Route path="/signup" component={Signup} />
       </Switch>
