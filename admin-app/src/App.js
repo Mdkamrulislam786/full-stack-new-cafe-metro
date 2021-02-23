@@ -11,6 +11,7 @@ import Products from "./containers/Products";
 import Orders from "./containers/Orders";
 import Category from "./containers/Category";
 import NewPage from "./containers/NewPage";
+import Gallery from "./containers/Gallery";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ function App() {
         <PrivateRoute path="/category" component={Category} />
         <PrivateRoute path="/products" component={Products} />
         <PrivateRoute path="/orders" component={Orders} />
+        <PrivateRoute path="/gallery" component={Gallery} />
         <Route path="/signin" component={Signin} />
         <Route path="/signup" component={Signup} />
       </Switch>

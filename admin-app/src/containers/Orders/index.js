@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateOrder } from "../../actions";
 import Layout from "../../components/Layout";
 import Card from "../../components/UI/Card";
+import moment from 'moment'
 import "./style.css";
 
 const Orders = (props) => {
@@ -100,6 +101,12 @@ const Orders = (props) => {
             <div>
               <span className="title">Payment Status</span> <br />
               <span className="value">{orderItem.paymentStatus}</span>
+            </div>
+            <div>
+              <span className="title">Ordered At</span> <br />
+              <span className="value">
+                {moment(orderItem.createdAt).calendar()}
+              </span>
             </div>
           </div>
           <div

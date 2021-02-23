@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
-import { Card, Table } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import {  Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { getOrders } from "../../../../actions";
 import "../Profile.css";
-import { generatePublicUrl } from "../../../../urlConfig";
+import moment from 'moment'
 
 const Orders = ({ userName }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
+  console.log("userorder", user.orders);
   useEffect(() => {
     dispatch(getOrders());
   }, []);
@@ -19,8 +19,9 @@ const Orders = ({ userName }) => {
           <tr>
             <th>Order Num</th>
             <th>Name</th>
-            <th>Total $</th>
+            <th>Total</th>
             <th>Status</th>
+            <th>Ordered At</th>
           </tr>
         </thead>
         <tbody>
@@ -32,10 +33,17 @@ const Orders = ({ userName }) => {
                 {order.items
                   .map((item) => item.payablePrice * item.purchasedQty)
                   .reduce((acc, current) => {
-                   return acc + current;
-                  }, 0)}
+                    return acc + current;
+                  }, 0)} tk
               </td>
-              <td> {order.orderStatus.filter((item) => item.isCompleted === true).reverse()[0].type}</td>
+              <td>
+                {
+                  order.orderStatus
+                    .filter((item) => item.isCompleted === true)
+                    .reverse()[0].type
+                }
+              </td>
+              <td> {moment(order.orderStatus[0].date).calendar()} </td>
             </tr>
           ))}
         </tbody>

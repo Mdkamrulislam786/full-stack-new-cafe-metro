@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import MenuItems from "./MenuItems";
 import "./testmenu.css";
-// import burger from "../images/burger.jpg";
+import burger from "../images/burger.jpg";
 // import cake from "../images/cake-2.jpeg";
 //Bootsrap
 import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getAllCategory } from "../actions";
 import { Fragment } from "react";
 import { useHistory } from "react-router-dom";
+import { generatePublicUrl } from "../urlConfig";
 
 const TestMenu = () => {
   //GET ALL CATEGORIES WHEN RENDERED
@@ -35,13 +36,27 @@ const TestMenu = () => {
   const renderChildrenCategories = (categories) => {
     return categories.map((category, i) => (
       <Tab.Pane key={i} eventKey={category.name}>
-        {category.children.map((cat, i) => (
-          <Fragment key={i}>
-            <h2 onClick={() => history.push(`/shop/${cat.slug}`)}>
-              {cat.name}
-            </h2>
-          </Fragment>
-        ))}
+        <Row>
+          {category.children.map((cat, i) => (
+            <Col xs={6} md={4} key={i}>
+              <div
+                className="menu__category"
+                onClick={() => history.push(`/shop/${cat.slug}`)}
+              >
+                <img
+                  src={
+                    cat?.categoryImage
+                      ? generatePublicUrl(cat?.categoryImage)
+                      : burger
+                  }
+                  alt="cat-img"
+                  className="catImg"
+                />
+                <h2>{cat.name}</h2>
+              </div>
+            </Col>
+          ))}
+        </Row>
       </Tab.Pane>
     ));
   };

@@ -16,13 +16,12 @@ const pageRoutes = require("./routes/admin/page");
 const addressRoutes = require("./routes/address");
 const orderRoutes = require("./routes/order");
 const adminOrderRoute = require("./routes/admin/order.routes");
+const galleryRoute = require("./routes/admin/gallery");
 
 //environment variable or you can say constants
 env.config();
 
 // mongodb connection
-//mongodb+srv://root:<password>@cluster0.8pl1w.mongodb.net/<dbname>?retryWrites=true&w=majority
-//mongodb+srv://kamrul:<password>@cluster0.gqrns.mongodb.net/<dbname>?retryWrites=true&w=majority
 mongoose
   .connect(
     `mongodb+srv://${process.env.MONGO_DB_USER}:${process.env.MONGO_DB_PASSWORD}@cluster0.gqrns.mongodb.net/${process.env.MONGO_DB_DATABASE}?retryWrites=true&w=majority`,
@@ -37,6 +36,7 @@ mongoose
     console.log("Database connected");
   });
 
+//middlewares
 app.use(cors());
 app.use(express.json());
 app.use("/public", express.static(path.join(__dirname, "uploads")));
@@ -50,8 +50,9 @@ app.use("/api", pageRoutes);
 app.use("/api", addressRoutes);
 app.use("/api", orderRoutes);
 app.use("/api", adminOrderRoute);
+app.use("/api", galleryRoute);
 
-
+//listen-running
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${process.env.PORT}`);
 });

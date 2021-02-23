@@ -23,3 +23,16 @@
     /* border-bottom: 3px solid #000; */
     transform: all .7s ease-in-out;
 }
+
+
+/* menu__category */
+.menu__category{
+text-align: center;
+cursor: pointer;
+}
+.catImg {
+    height: 100%;
+    width: 100%;
+    margin-top: 1rem;
+    border-radius: 5px;
+}

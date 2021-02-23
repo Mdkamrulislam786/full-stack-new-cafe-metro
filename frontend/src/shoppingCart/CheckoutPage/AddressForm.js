@@ -3,11 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { addAddress } from "../../actions";
 import { MaterialButton, MaterialInput } from "../../components/MaterialUI";
 
-/**
- * @author
- * @function AddressForm
- **/
-
 const AddressForm = (props) => {
   const { initialData } = props;
   const [name, setName] = useState(initialData ? initialData.name : "");

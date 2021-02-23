@@ -104,7 +104,7 @@ const CheckoutPage = (props) => {
   const [password, setPassword] = useState("");
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-
+console.log("user107", user);
   const onAddressSubmit = (addr) => {
     setSelectedAddress(addr);
     setConfirmAddress(true);
@@ -178,7 +178,6 @@ const CheckoutPage = (props) => {
       edit: false,
     }));
     setAddress(address);
-    //user.address.length === 0 && setNewAddress(true);
   }, [user.address]);
 
   useEffect(() => {

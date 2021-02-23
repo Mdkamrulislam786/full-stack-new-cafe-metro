@@ -1,7 +1,7 @@
 const Category = require("../../models/category");
 const Product = require("../../models/product");
 const Order = require("../../models/order");
-// const UserAddress = require("../../models/address");
+const UserAddress = require("../../models/address");
 
 function createCategories(categories, parentId = null) {
   const categoryList = [];
@@ -36,17 +36,17 @@ exports.initialData = async (req, res) => {
 
   const orders = await Order.find({})
     .populate("items.productId", "name")
-    // .populate({ path: "addressId", select: "_id address name mobileNumber" })
     .exec();
+  const address = UserAddress.find().exec();
 
   res.status(200).json({
     categories: createCategories(categories),
     products,
     orders,
+    address,
   });
 };
 
-// .select(
-//       "_id user addressId totalAmount items paymentStatus paymentType orderStatus"
-//     )
-//        // .populate({ path: "addressId", select: "_id address name mobileNumber" })
+// .select("_id user addressId totalAmount items paymentStatus paymentType orderStatus")
+// .populate("addressId", "address")
+// .populate({ path: "addressId", select: "_id address name mobileNumber" })
