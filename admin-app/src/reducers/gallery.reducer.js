@@ -13,7 +13,7 @@ const buildNewGallery = (galleries, galleryInfo) => {
     _id: galleryInfo._id,
     name: galleryInfo.name,
     slug: galleryInfo.slug,
-    img: galleryInfo.img,
+    img: galleryInfo.galleryImage,
   };
   myGallery.push({
     ...galleries,
@@ -37,7 +37,6 @@ export default (state = initState, action) => {
         state.galleryImages,
         galleryInfo
       );
-      console.log("updatedGallery", updatedGalleryInfo);
       state = {
         ...state,
         galleryImages: updatedGalleryInfo,
@@ -51,25 +50,25 @@ export default (state = initState, action) => {
         error: action.payload,
       };
       break;
-    case galleryConstants.GET_ALL_CATEGORIES_SUCCESS:
+    case galleryConstants.GET_GALLERY_SUCCESS:
       state = {
         ...state,
         galleryImages: action.payload.galleryImages,
       };
       break;
-    case galleryConstants.DELETE_CATEGORIES_REQUEST:
+    case galleryConstants.DELETE_GALLERY_REQUEST:
       state = {
         ...state,
         loading: true,
       };
       break;
-    case galleryConstants.DELETE_CATEGORIES_SUCCESS:
+    case galleryConstants.DELETE_GALLERY_SUCCESS:
       state = {
         ...state,
         loading: false,
       };
       break;
-    case galleryConstants.DELETE_CATEGORIES_FAILURE:
+    case galleryConstants.DELETE_GALLERY_FAILURE:
       state = {
         ...state,
         loading: false,

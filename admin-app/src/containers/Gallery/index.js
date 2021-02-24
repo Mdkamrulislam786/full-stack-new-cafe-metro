@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { addGalleryImg } from "../../actions";
+import { addGalleryImg, getAllGallery } from "../../actions";
 import Layout from "../../components/Layout";
 import AddNewImg from "./AddNewImg";
 const Gallery = () => {
@@ -10,6 +10,8 @@ const Gallery = () => {
   const dispatch = useDispatch();
   const gallery = useSelector((state) => state.gallery);
   console.log("gallery", gallery);
+
+  //HANDLE FORM SUBMIT
   const handleSubmit = () => {
     const form = new FormData();
     form.append("name", imgName);
@@ -19,6 +21,10 @@ const Gallery = () => {
     setImgName("");
     setGalleryImage("");
   };
+
+  // useEffect(() => {
+  //   dispatch(getAllGallery())
+  // }, [])
 
   return (
     <Layout sidebar>
