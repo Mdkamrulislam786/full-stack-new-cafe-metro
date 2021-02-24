@@ -6,6 +6,7 @@ import orderReducer from "./order.reducer";
 import pageReducer from "./page.reducer";
 import galleryReducer from "./gallery.reducer";
 import { combineReducers } from "redux";
+import addressReducer from "./address.reducer";
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   order: orderReducer,
   page: pageReducer,
   gallery: galleryReducer,
+  address: addressReducer,
 });
 
 export default rootReducer;

@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Button, Container } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { addGalleryImg, getAllGallery } from "../../actions";
+import { addGalleryImg, deleteGalleryImg, getAllGallery } from "../../actions";
 import Layout from "../../components/Layout";
 import AddNewImg from "./AddNewImg";
+import "./style.css";
 const Gallery = () => {
   const [imgName, setImgName] = useState("");
   const [galleryImage, setGalleryImage] = useState("");
   const dispatch = useDispatch();
   const gallery = useSelector((state) => state.gallery);
-  console.log("gallery", gallery);
+  console.log("gallery", gallery?.galleryImages.gallery);
 
   //HANDLE FORM SUBMIT
   const handleSubmit = () => {
@@ -22,10 +23,28 @@ const Gallery = () => {
     setGalleryImage("");
   };
 
-  // useEffect(() => {
-  //   dispatch(getAllGallery())
-  // }, [])
-
+  const renderImages = () => {
+    return gallery.galleryImages.gallery?.length > 0
+      ? gallery.galleryImages.gallery?.map((img, i) => (
+          <Col md={3} key={i}>
+            <div className="gallery__img">
+              <img src={img.galleryImage} alt={img.name} />
+              <Button
+                onClick={() => {
+                  const id = img._id;
+                  dispatch(deleteGalleryImg(id));
+                }}
+                variant="danger"
+                size="sm"
+              >
+                Delete
+              </Button>{" "}
+              ({i})
+            </div>
+          </Col>
+        ))
+      : `No image added, add image`;
+  };
   return (
     <Layout sidebar>
       <Container>
@@ -50,6 +69,7 @@ const Gallery = () => {
             </Button>
           </form>
         </div>
+        <Row>{renderImages()}</Row>
       </Container>
     </Layout>
   );

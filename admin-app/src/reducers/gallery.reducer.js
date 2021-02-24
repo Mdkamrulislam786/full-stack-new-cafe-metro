@@ -53,7 +53,7 @@ export default (state = initState, action) => {
     case galleryConstants.GET_GALLERY_SUCCESS:
       state = {
         ...state,
-        galleryImages: action.payload.galleryImages,
+        galleryImages: action.payload,
       };
       break;
     case galleryConstants.DELETE_GALLERY_REQUEST:
@@ -72,7 +72,7 @@ export default (state = initState, action) => {
       state = {
         ...state,
         loading: false,
-        error: action.payload.error,
+        error: action.payload,
       };
       break;
     default:

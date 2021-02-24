@@ -4,18 +4,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateOrder } from "../../actions";
 import Layout from "../../components/Layout";
 import Card from "../../components/UI/Card";
-import moment from 'moment'
+import moment from "moment";
 import "./style.css";
 
 const Orders = (props) => {
   const order = useSelector((state) => state.order);
+  const address = useSelector((state) => state.address);
   const [type, setType] = useState("");
   const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("");
   const [orderList, setOrderLists] = useState([]);
   const [filteredOrders, setFilteredOrders] = useState([]);
-  console.log("orders", orderList);
-
+  console.log("orders", orderList.length);
+  let userAddress = address.address.address?.find(
+    (add) => add.user === add.user
+  );
   const onOrderUpdate = (orderId) => {
     const payload = {
       orderId,
@@ -40,17 +43,22 @@ const Orders = (props) => {
   useEffect(() => {
     setFilteredOrders(
       orderList?.reverse().filter((order) => {
-        return order._id.toString()?.toLowerCase().includes(searchTerm?.toLowerCase());
+        return order._id
+          .toString()
+          ?.toLowerCase()
+          .includes(searchTerm?.toLowerCase());
       })
     );
   }, [searchTerm, orderList]);
 
- const handleSearch = (event) => {
-   event.preventDefault();
- };
+  const handleSearch = (event) => {
+    event.preventDefault();
+  };
   return (
     <Layout sidebar>
       <div className="searchOrder">
+        <h6> Total Orders:{orderList?.length} </h6>
+
         <div onSubmit={handleSearch} className="search">
           <form className="searchform">
             <input
@@ -109,17 +117,28 @@ const Orders = (props) => {
               </span>
             </div>
           </div>
+          {/* ADDRESS */}
           <div
             style={{
-              display: "flex",
-              justifyContent: "flex-start",
               padding: "10px",
               alignItems: "center",
             }}
           >
-            <p>Adrress:</p>
-            <p>{orderItem.addressId}</p>
+            {userAddress?.address?.map((item, i) => (
+              <div
+                key={i}
+                style={{
+                  display: "flex",
+                  justifyContent: "flex-start",
+                  flexDirection: "column",
+                }}
+              >
+                <span> Adrress: {item.address} </span>
+                <span> Mobile: {item.mobileNumber} </span>
+              </div>
+            ))}
           </div>
+          {/* ORDERSTATUS */}
           <div
             style={{
               boxSizing: "border-box",
