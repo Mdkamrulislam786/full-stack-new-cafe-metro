@@ -15,7 +15,7 @@ const Orders = (props) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [orderList, setOrderLists] = useState([]);
   const [filteredOrders, setFilteredOrders] = useState([]);
-  console.log("orders", orderList.length);
+  console.log("orders", orderList);
   let userAddress = address.address.address?.find(
     (add) => add.user === add.user
   );

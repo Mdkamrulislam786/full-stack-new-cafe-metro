@@ -104,7 +104,7 @@ const CheckoutPage = (props) => {
   const [password, setPassword] = useState("");
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-console.log("user107", user);
+  console.log("user107", user);
   const onAddressSubmit = (addr) => {
     setSelectedAddress(addr);
     setConfirmAddress(true);
@@ -154,7 +154,7 @@ console.log("user107", user);
       purchasedQty: cart.cartItems[key].qty,
     }));
     const payload = {
-      addressId: selectedAddress._id,
+      addressId: selectedAddress,
       totalAmount,
       items,
       paymentStatus: "pending",
@@ -210,25 +210,25 @@ console.log("user107", user);
                   </div>
                 ) : (
                   <div>
-                      <MaterialInput
-                        label="Email"
-                        type="text"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                      />
-                      <MaterialInput
-                        label="Password"
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                      />
-                      <MaterialButton
-                        title="LOGIN"
-                        onClick={userLogin}
-                        style={{
-                          width: "200px",
-                        }}
-                      />
+                    <MaterialInput
+                      label="Email"
+                      type="text"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <MaterialInput
+                      label="Password"
+                      type="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <MaterialButton
+                      title="LOGIN"
+                      onClick={userLogin}
+                      style={{
+                        width: "200px",
+                      }}
+                    />
                   </div>
                 )
               }
