@@ -9,9 +9,10 @@ const orderSchema = new mongoose.Schema(
     },
     addressId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "UserAddress.address",
+      ref: "UserAddress",
       required: true,
     },
+    address: [],
     totalAmount: {
       type: Number,
       required: true,

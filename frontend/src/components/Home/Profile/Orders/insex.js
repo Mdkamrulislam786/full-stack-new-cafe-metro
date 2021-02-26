@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
-import {  Table } from "react-bootstrap";
+import { Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { getOrders } from "../../../../actions";
 import "../Profile.css";
-import moment from 'moment'
+import moment from "moment";
+import { Link } from "react-router-dom";
 
 const Orders = ({ userName }) => {
   const dispatch = useDispatch();
@@ -26,25 +27,29 @@ const Orders = ({ userName }) => {
         </thead>
         <tbody>
           {user.orders.reverse().map((order, i) => (
+          
             <tr key={i}>
-              <td> {order._id} </td>
-              <td> {userName} </td>
-              <td>
-                {order.items
-                  .map((item) => item.payablePrice * item.purchasedQty)
-                  .reduce((acc, current) => {
-                    return acc + current;
-                  }, 0)} tk
-              </td>
-              <td>
-                {
-                  order.orderStatus
-                    .filter((item) => item.isCompleted === true)
-                    .reverse()[0].type
-                }
-              </td>
-              <td> {moment(order.orderStatus[0].date).calendar()} </td>
-            </tr>
+                
+                <td><Link  to={`/order_details/${order._id}`}> {order._id} </Link></td>
+                <td> {userName} </td>
+                <td>
+                  {order.items
+                    .map((item) => item.payablePrice * item.purchasedQty)
+                    .reduce((acc, current) => {
+                      return acc + current;
+                    }, 0)}{" "}
+                  tk
+                </td>
+                <td>
+                  {
+                    order.orderStatus
+                      .filter((item) => item.isCompleted === true)
+                      .reverse()[0].type
+                  }
+                </td>
+                <td> {moment(order.orderStatus[0].date).calendar()} </td>
+              </tr>
+      
           ))}
         </tbody>
       </Table>

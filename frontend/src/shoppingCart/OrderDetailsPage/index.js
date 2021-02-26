@@ -1,20 +1,16 @@
 import React, { useEffect } from "react";
+import { Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { getOrder } from "../../actions";
 import Card from "../../components/UI/Card";
 import Price from "../../components/UI/Price";
-
+import { generatePublicUrl } from "../../urlConfig";
 import "./style.css";
-
-/**
- * @author
- * @function OrderDetails
- **/
 
 const OrderDetailsPage = (props) => {
   const dispatch = useDispatch();
   const orderDetails = useSelector((state) => state.user.orderDetails);
-  console.log(orderDetails);
+  // console.log(orderDetails);
   useEffect(() => {
     console.log({ props });
     const payload = {
@@ -57,12 +53,8 @@ const OrderDetailsPage = (props) => {
   }
 
   return (
-    <div
-      style={{
-        width: "1160px",
-        margin: "10px auto",
-      }}
-    >
+    <Container>
+      <h2 style={{ paddingTop: "4rem" }}>Order Details</h2>
       <Card
         style={{
           margin: "10px 0",
@@ -85,23 +77,35 @@ const OrderDetailsPage = (props) => {
       </Card>
 
       {orderDetails.items.map((item, index) => (
-        <Card style={{ display: "flex", padding: "20px 0", margin: "10px 0" }}>
+        <Card
+          key={index}
+          style={{ display: "flex", padding: "20px", margin: "10px 0" }}
+        >
           <div className="flexRow">
             <div className="delItemImgContainer">
-              <img src={item.productId.productPictures[0].img} alt="" />
+              <img
+                src={generatePublicUrl(item.productId.productPictures[0].img)}
+                alt=""
+              />
             </div>
             <div style={{ width: "250px" }}>
-              <div className="delItemName">{item.productId.name}</div>
-              <div>{item.payablePrice}</div>
+              <div className="delItemName">
+                {item.productId.name}/quantity: {item.purchasedQty}
+              </div>
+              <div className="delItemName">price:{item.payablePrice}tk</div>
+              <div className="delItemName">
+                total:{item.payablePrice * item.purchasedQty}tk
+              </div>
             </div>
           </div>
           <div style={{ padding: "25px 50px" }}>
             <div className="orderTrack">
-              {orderDetails.orderStatus.map((status) => (
+              {orderDetails.orderStatus.map((status, i) => (
                 <div
                   className={`orderStatus ${
                     status.isCompleted ? "active" : ""
                   }`}
+                  key={i}
                 >
                   <div
                     className={`point ${status.isCompleted ? "active" : ""}`}
@@ -120,7 +124,7 @@ const OrderDetailsPage = (props) => {
           </div>
         </Card>
       ))}
-    </div>
+    </Container>
   );
 };
 

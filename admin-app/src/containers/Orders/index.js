@@ -16,9 +16,9 @@ const Orders = (props) => {
   const [orderList, setOrderLists] = useState([]);
   const [filteredOrders, setFilteredOrders] = useState([]);
   console.log("orders", orderList);
-  let userAddress = address.address.address?.find(
-    (add) => add.user === add.user
-  );
+  // let userAddress = address.address.address?.find(
+  //   (add) => add.user === add.user
+  // );
   const onOrderUpdate = (orderId) => {
     const payload = {
       orderId,
@@ -124,7 +124,7 @@ const Orders = (props) => {
               alignItems: "center",
             }}
           >
-            {userAddress?.address?.map((item, i) => (
+            {orderItem?.address?.map((add, i) => (
               <div
                 key={i}
                 style={{
@@ -133,8 +133,9 @@ const Orders = (props) => {
                   flexDirection: "column",
                 }}
               >
-                <span> Adrress: {item.address} </span>
-                <span> Mobile: {item.mobileNumber} </span>
+                <span> Name: {add.name} </span>
+                <span> Adrress: {add.address} </span>
+                <span> Mobile: {add.mobileNumber} </span>
               </div>
             ))}
           </div>

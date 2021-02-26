@@ -154,7 +154,8 @@ const CheckoutPage = (props) => {
       purchasedQty: cart.cartItems[key].qty,
     }));
     const payload = {
-      addressId: selectedAddress,
+      addressId: selectedAddress._id,
+      address: selectedAddress,
       totalAmount,
       items,
       paymentStatus: "pending",
@@ -242,8 +243,9 @@ const CheckoutPage = (props) => {
                   {confirmAddress ? (
                     <div className="stepCompleted">{`${selectedAddress.name} ${selectedAddress.address} - ${selectedAddress.pinCode}`}</div>
                   ) : (
-                    address.map((adr) => (
+                    address.map((adr,i) => (
                       <Address
+                        key={i}
                         selectAddress={selectAddress}
                         enableAddressEditForm={enableAddressEditForm}
                         confirmDeliveryAddress={confirmDeliveryAddress}

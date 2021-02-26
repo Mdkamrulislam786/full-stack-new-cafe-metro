@@ -21,7 +21,7 @@ exports.updateOrder = (req, res) => {
 exports.getCustomerOrders = async (req, res) => {
   const orders = await Order.find({})
     .populate("items.productId", "name")
-    .populate("addressId", "_id address user")
+    // .populate("addressId", "_id address")
     .exec();
   res.status(200).json({ orders });
 };

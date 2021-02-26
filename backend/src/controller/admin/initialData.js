@@ -36,6 +36,7 @@ exports.initialData = async (req, res) => {
 
   const orders = await Order.find({})
     .populate("items.productId", "name")
+    .lean()
     .exec();
   const address = await UserAddress.find().exec();
 
@@ -48,6 +49,17 @@ exports.initialData = async (req, res) => {
   });
 };
 
-// .select("_id user addressId totalAmount items paymentStatus paymentType orderStatus")
-// .populate("addressId", "address")
-// .populate({ path: "addressId", select: "_id address name mobileNumber" })
+// (error, orders) => {
+//   if (error) return error;
+
+//   if (orders) {
+//     UserAddress.find({}).exec((error, address) => {
+//       if (error) return error;
+//       orders.address = address?.find(
+//         (adr) => adr._id?.toString() == orders.addressId?.toString()
+//       );
+
+//       return orders;
+//     });
+//   }
+// };
