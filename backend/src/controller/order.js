@@ -26,6 +26,25 @@ exports.addOrder = (req, res) => {
           isCompleted: false,
         },
       ];
+      req.body.paymentStatus = [
+        {
+          type: "pending",
+          date: new Date(),
+          isCompleted: true,
+        },
+        {
+          type: "cancelled",
+          isCompleted: false,
+        },
+        {
+          type: "refund",
+          isCompleted: false,
+        },
+        {
+          type: "paid",
+          isCompleted: false,
+        },
+      ];
       const order = new Order(req.body);
       order.save((error, order) => {
         if (error) return res.status(400).json({ error });

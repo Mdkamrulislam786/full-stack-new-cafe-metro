@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateOrder } from "../../actions";
+import { updateOrder, updatePaymentStatus } from "../../actions";
 import Layout from "../../components/Layout";
 import Card from "../../components/UI/Card";
 import moment from "moment";
@@ -9,22 +9,28 @@ import "./style.css";
 
 const Orders = (props) => {
   const order = useSelector((state) => state.order);
-  const address = useSelector((state) => state.address);
   const [type, setType] = useState("");
+  const [paymentType, setPaymentType] = useState("");
   const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("");
   const [orderList, setOrderLists] = useState([]);
   const [filteredOrders, setFilteredOrders] = useState([]);
-  console.log("orders", orderList);
-  // let userAddress = address.address.address?.find(
-  //   (add) => add.user === add.user
-  // );
+  // console.log("orders", orderList);
+  // updatePaymentStatus;
   const onOrderUpdate = (orderId) => {
     const payload = {
       orderId,
       type,
     };
     dispatch(updateOrder(payload));
+  };
+
+  const onPaymentStatusUpdate = (orderId) => {
+    const payload = {
+      orderId,
+      paymentType,
+    };
+    dispatch(updatePaymentStatus(payload));
   };
 
   const formatDate = (date) => {
@@ -54,6 +60,7 @@ const Orders = (props) => {
   const handleSearch = (event) => {
     event.preventDefault();
   };
+
   return (
     <Layout sidebar>
       <div className="searchOrder">
@@ -85,7 +92,6 @@ const Orders = (props) => {
               display: "flex",
               justifyContent: "space-between",
               padding: "10px",
-              alignItems: "center",
             }}
           >
             <div>
@@ -108,7 +114,38 @@ const Orders = (props) => {
             </div>
             <div>
               <span className="title">Payment Status</span> <br />
-              <span className="value">{orderItem.paymentStatus}</span>
+              <span className="value">
+                {orderItem.paymentStatus !== "pending"
+                  ? orderItem.paymentStatus
+                      ?.filter((status, i) => status.isCompleted === true)[0]
+                      ?.type?.toString()
+                  : null}
+              </span>
+              <br />
+              {/* {JSON.stringify(currentPaymentStatus())} */}
+              <select
+                className="value"
+                onChange={(e) => setPaymentType(e.target.value)}
+              >
+                <option value={""}>select status</option>
+                {orderItem.paymentStatus !== "pending"
+                  ? orderItem.paymentStatus.reverse()?.map((status, i) => {
+                      return (
+                        <Fragment key={i}>
+                          {!status.isCompleted ? (
+                            <option key={status.type} value={status.type}>
+                              {status.type}
+                            </option>
+                          ) : null}
+                        </Fragment>
+                      );
+                    })
+                  : null}
+              </select>
+              <br />
+              <button onClick={() => onPaymentStatusUpdate(orderItem._id)}>
+                confirm
+              </button>
             </div>
             <div>
               <span className="title">Ordered At</span> <br />

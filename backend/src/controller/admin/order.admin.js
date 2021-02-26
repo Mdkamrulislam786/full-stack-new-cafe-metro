@@ -18,10 +18,27 @@ exports.updateOrder = (req, res) => {
   });
 };
 
+exports.updatePaymentStatus = (req, res) => {
+  Order.updateOne(
+    { _id: req.body.orderId, "paymentStatus.type": req.body.paymentType },
+    {
+      $set: {
+        "paymentStatus.$": [
+          { type: req.body.paymentType, date: new Date(), isCompleted: true },
+        ],
+      },
+    }
+  ).exec((error, order) => {
+    if (error) return res.status(400).json({ error });
+    if (order) {
+      res.status(201).json({ order });
+    }
+  });
+};
+
 exports.getCustomerOrders = async (req, res) => {
   const orders = await Order.find({})
     .populate("items.productId", "name")
-    // .populate("addressId", "_id address")
     .exec();
   res.status(200).json({ orders });
 };

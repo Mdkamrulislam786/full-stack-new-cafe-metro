@@ -158,7 +158,7 @@ const CheckoutPage = (props) => {
       address: selectedAddress,
       totalAmount,
       items,
-      paymentStatus: "pending",
+      //paymentStatus: "pending",
       paymentType: "cod",
     };
 

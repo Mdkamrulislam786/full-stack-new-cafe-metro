@@ -88,42 +88,41 @@ const OrderDetailsPage = (props) => {
                 alt=""
               />
             </div>
-            <div style={{ width: "250px" }}>
+            <div>
               <div className="delItemName">
-                {item.productId.name}/quantity: {item.purchasedQty}
-              </div>
-              <div className="delItemName">price:{item.payablePrice}tk</div>
-              <div className="delItemName">
+                Name: {item.productId.name} <br />
+                quantity: {item.purchasedQty} <br />
+                price:{item.payablePrice}tk <br />
                 total:{item.payablePrice * item.purchasedQty}tk
               </div>
             </div>
           </div>
-          <div style={{ padding: "25px 50px" }}>
-            <div className="orderTrack">
-              {orderDetails.orderStatus.map((status, i) => (
-                <div
-                  className={`orderStatus ${
-                    status.isCompleted ? "active" : ""
-                  }`}
-                  key={i}
-                >
-                  <div
-                    className={`point ${status.isCompleted ? "active" : ""}`}
-                  ></div>
-                  <div className="orderInfo">
-                    <div className="status">{status.type}</div>
-                    <div className="date">{formatDate(status.date)}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div style={{ fontWeight: "500", fontSize: 14 }}>
-            {orderDetails.orderStatus[3].isCompleted &&
-              `Delivered on ${formatDate2(orderDetails.orderStatus[3].date)}`}
-          </div>
         </Card>
       ))}
+      <Card style={{ display: "flex", padding: "20px", margin: "10px 0" }}>
+        <div style={{ padding: "25px 50px" }}>
+          <div className="orderTrack">
+            {orderDetails.orderStatus.map((status, i) => (
+              <div
+                className={`orderStatus ${status.isCompleted ? "active" : ""}`}
+                key={i}
+              >
+                <div
+                  className={`point ${status.isCompleted ? "active" : ""}`}
+                ></div>
+                <div className="orderInfo">
+                  <div className="status">{status.type}</div>
+                  <div className="date">{formatDate(status.date)}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div style={{ fontWeight: "500", fontSize: 14 }}>
+          {orderDetails.orderStatus[3].isCompleted &&
+            `Delivered on ${formatDate2(orderDetails.orderStatus[3].date)}`}
+        </div>
+      </Card>
     </Container>
   );
 };

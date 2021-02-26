@@ -45,3 +45,25 @@ export const updateOrder = (payload) => {
     }
   };
 };
+
+export const updatePaymentStatus = (payload) => {
+  return async (dispatch) => {
+    dispatch({ type: orderConstants.UPDATE_CUSTOMER_PAYMENT_REQUEST });
+    try {
+      const res = await axios.post("/order/updatePaymentStatus", payload);
+      if (res.status === 201) {
+        dispatch({ type: orderConstants.UPDATE_CUSTOMER_PAYMENT_SUCCESS });
+        dispatch(getCustomerOrders());
+      } else {
+        const { error } = res.data;
+        dispatch({
+          type: orderConstants.UPDATE_CUSTOMER_PAYMENT_FAILURE,
+          payload: { error },
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
