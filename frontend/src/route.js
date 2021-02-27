@@ -21,41 +21,48 @@ import Order from "./shoppingCart/Order/Order";
 import OrderCompleted from "./shoppingCart/Order/OrderCompleted";
 import { useDispatch, useSelector } from "react-redux";
 import { isUserLoggedIn, updateCart } from "./actions";
+import Reset from "./components/Reset";
+import NewPassword from "./components/NewPassword";
+const Routes = () => {
+  const dispatch = useDispatch();
+  const auth = useSelector((state) => state.auth);
+  useEffect(() => {
+    if (!auth.authenticate) {
+      dispatch(isUserLoggedIn());
+    }
+  }, [dispatch, auth.authenticate]);
 
-const Routes =()=>{
-   const dispatch = useDispatch();
-   const auth = useSelector((state) => state.auth);
-   useEffect(() => {
-     if (!auth.authenticate) {
-       dispatch(isUserLoggedIn());
-     }
-   }, [dispatch, auth.authenticate]);
-
-   useEffect(() => {
-     console.log("App.js - updateCart");
-     dispatch(updateCart());
-   }, [dispatch, auth.authenticate]);
-    return (
-      <Layout>
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/Menu" exact component={MenuHome} />
-          <Route path="/MainMenu" exact component={MainMenu} />
-          <Route path="/shop" exact component={ShoppingCart} />
-          <Route path="/Catering-services" exact component={Catering} />
-          <Route path="/Wedding-services" exact component={Wedding} />
-          <Route path="/our-story" exact component={OurStory} />
-          <Route path="/profile" exact component={Profile} />
-          <Route path="/checkout" component={CheckoutPage} />
-          <Route path="/account/orders" component={OrderPage} />
-          <Route path="/order_details/:orderId" component={OrderDetailsPage} />
-          <Route path="/Cart" exact component={Cart} />
-          <Route path="/order" exact component={Order} />
-          <Route path="/order-completed" exact component={OrderCompleted} />
-          <Route path="/shop/:slug" exact component={MenuItems} />
-        </Switch>
-      </Layout>
-    )
-}
+  useEffect(() => {
+    console.log("App.js - updateCart");
+    dispatch(updateCart());
+  }, [dispatch, auth.authenticate]);
+  return (
+    <Layout>
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/Menu" exact component={MenuHome} />
+        <Route path="/MainMenu" exact component={MainMenu} />
+        <Route path="/shop" exact component={ShoppingCart} />
+        <Route path="/Catering-services" exact component={Catering} />
+        <Route path="/Wedding-services" exact component={Wedding} />
+        <Route path="/our-story" exact component={OurStory} />
+        <Route path="/profile" exact component={Profile} />
+        <Route path="/checkout" exact component={CheckoutPage} />
+        <Route path="/account/orders" exact component={OrderPage} />
+        <Route
+          path="/order_details/:orderId"
+          exact
+          component={OrderDetailsPage}
+        />
+        <Route path="/Cart" exact component={Cart} />
+        <Route path="/order" exact component={Order} />
+        <Route path="/order-completed" exact component={OrderCompleted} />
+        <Route path="/shop/:slug" exact component={MenuItems} />
+        <Route path="/reset" exact component={Reset} />
+        <Route path="/reset/:token" exact component={NewPassword} />
+      </Switch>
+    </Layout>
+  );
+};
 
 export default Routes;

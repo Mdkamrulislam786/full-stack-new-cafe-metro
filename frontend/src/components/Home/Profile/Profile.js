@@ -1,12 +1,16 @@
 import React from "react";
-import { Nav, Row, Tab, Col, Container } from "react-bootstrap";
+import { Nav, Row, Tab, Col, Container, Button } from "react-bootstrap";
 import AccountInfo from "./AccountInfo";
 import Orders from "./Orders/insex";
 import "./Profile.css";
 
 const Profile = () => {
   const user = JSON.parse(localStorage.getItem("user"));
-  return (
+  return !user ? (
+    <h2 style={{ height: "100vh", display: "grid", placeItems: "center" }}>
+      Login to see your profile
+    </h2>
+  ) : (
     <div className="profile">
       <div className="profile__name">
         <h3>Welcome {user.firstName}</h3>

@@ -46,7 +46,7 @@ const TestMenu = () => {
                 <img
                   src={
                     cat?.categoryImage
-                      ? generatePublicUrl(cat?.categoryImage)
+                      ? cat?.categoryImage
                       : burger
                   }
                   alt="cat-img"
