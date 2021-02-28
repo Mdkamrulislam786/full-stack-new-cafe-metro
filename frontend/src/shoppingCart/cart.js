@@ -72,7 +72,7 @@ const Cart = (props) => {
       return (
         <Fragment>
           <Navbar />
-          <div style={{ margin: "7rem auto 2rem auto" }}>
+          <div style={{ paddingTop: "8rem" }}>
             <h2
               style={{
                 textAlign: "center",

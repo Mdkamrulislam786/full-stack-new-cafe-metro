@@ -6,13 +6,10 @@
 }
 
 /* Navbar */
-.header .detail {
-  background-color: rgba(0, 0, 0, 0.719);
-  height: 3rem;
-  align-items: center;
-}
 
-.App .header {
+
+
+.header {
   background-image: url(./images/pastries.jpg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -32,7 +29,11 @@
   bottom: 0;
 }
 
-
+.header .detail {
+  background-color: rgba(0, 0, 0, 0.719);
+  height: 3rem;
+  align-items: center;
+}
 
 .header {
   position: absolute;
@@ -158,6 +159,15 @@ h2 {
     font-size: 20px;
     font-weight: 400;
   }
+
+  .images__h3 h5 {
+    font-size: 16px;
+    font-weight: 500;
+  }
+   .images__h3 p {
+     font-size: 14px;
+
+   }
 }
 
 @media (min-width:320px) and (max-width:768px) {

@@ -158,7 +158,6 @@ const CheckoutPage = (props) => {
       address: selectedAddress,
       totalAmount,
       items,
-      //paymentStatus: "pending",
       paymentType: "cod",
     };
 
@@ -193,6 +192,10 @@ const CheckoutPage = (props) => {
 
   return (
     <Container>
+      <div style={{paddingTop:'4rem', textAlign:'center'}}>
+        <h2>Checkout</h2>
+        <p>Fill up correct info and check all the details carefully</p>
+      </div>
       <Row>
         <Col md={8}>
           <div className="checkoutContainer">
@@ -243,7 +246,7 @@ const CheckoutPage = (props) => {
                   {confirmAddress ? (
                     <div className="stepCompleted">{`${selectedAddress.name} ${selectedAddress.address} - ${selectedAddress.pinCode}`}</div>
                   ) : (
-                    address.map((adr,i) => (
+                    address.map((adr, i) => (
                       <Address
                         key={i}
                         selectAddress={selectAddress}
@@ -292,10 +295,11 @@ const CheckoutPage = (props) => {
                 }}
               >
                 <div
-                  className="flexRow sb"
+                 
                   style={{
                     padding: "20px",
                     alignItems: "center",
+                    flexWrap:'nowrap'
                   }}
                 >
                   <p style={{ fontSize: "12px" }}>

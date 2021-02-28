@@ -1,5 +1,5 @@
 .Collections {
-    padding: 2rem 0;
+    padding: 11rem 0 3rem 0;
 }
 
 .Collections a {
@@ -26,13 +26,21 @@
 
 
 /* menu__category */
-.menu__category{
-text-align: center;
-cursor: pointer;
+.menu__category {
+    text-align: center;
+    cursor: pointer;
+    overflow: hidden;
+
 }
+
 .catImg {
     height: 100%;
     width: 100%;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     border-radius: 5px;
+    transition: transform .5s ease-in-out;
+}
+
+.catImg:hover {
+    transform: scale(1.03);
 }

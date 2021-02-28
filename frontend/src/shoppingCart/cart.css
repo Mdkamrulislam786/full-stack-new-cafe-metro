@@ -7,6 +7,9 @@
     color: #000000;
 }
 
+.cartTotals {
+    padding: 1rem 0;
+}
 
 @media (min-width:320px) and (max-width:480px) {
     .cart-col-p {
@@ -17,4 +20,5 @@
         font-size: 14px;
         font-weight: 400;
     }
+
 }

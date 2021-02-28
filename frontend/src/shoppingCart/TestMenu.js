@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import MenuItems from "./MenuItems";
+import React, { useEffect } from "react";
 import "./testmenu.css";
 import burger from "../images/burger.jpg";
 // import cake from "../images/cake-2.jpeg";
@@ -8,9 +7,8 @@ import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
 //REDUX
 import { useSelector, useDispatch } from "react-redux";
 import { getAllCategory } from "../actions";
-import { Fragment } from "react";
 import { useHistory } from "react-router-dom";
-import { generatePublicUrl } from "../urlConfig";
+
 
 const TestMenu = () => {
   //GET ALL CATEGORIES WHEN RENDERED

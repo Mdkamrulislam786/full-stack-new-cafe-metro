@@ -7,7 +7,7 @@ import { generatePublicUrl } from "../urlConfig";
 import { Link } from "react-router-dom";
 import { Modal, Image } from "react-bootstrap";
 import Navbar from "./Navbar";
-
+import "../ShoppingCart.css";
 const MenuItems = () => {
   const product = useSelector((state) => state.product);
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ const MenuItems = () => {
   return (
     <>
       <Navbar />
-      <div style={{ margin: "7rem auto 3rem auto" }}>
+      <div style={{ paddingTop: "11rem" }}>
         <Container>
           <h2>{param.slug}</h2>
           <Row>
@@ -84,16 +84,17 @@ const MenuItems = () => {
                         </ButtonGroup>
                       </div>
                       <span className="images__h3">
-                        <h5 style={{ textAlign: "center" }}>{name}</h5>
-                        <h5
+                        <h5 style={{ textAlign: "center", marginBottom: 0 }}>
+                          {name}
+                        </h5>
+                        <p
                           style={{
                             color: "green",
                             textAlign: "center",
-                            fontSize: "16px",
                           }}
                         >
                           Price: {price}tk
-                        </h5>
+                        </p>
                       </span>
                     </div>
                   </div>

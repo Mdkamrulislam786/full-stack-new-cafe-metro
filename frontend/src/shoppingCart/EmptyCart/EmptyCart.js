@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 const EmptyCart = () => {
   const history = useHistory();
   return (
-    <Fragment>
+    <div style={{paddingTop:'11rem'}}>
       <Container>
         <Row>
           <Col className="text-center mt-5 mb-5">
@@ -18,7 +18,7 @@ const EmptyCart = () => {
           </Col>
         </Row>
       </Container>
-    </Fragment>
+    </div>
   );
 };
 
