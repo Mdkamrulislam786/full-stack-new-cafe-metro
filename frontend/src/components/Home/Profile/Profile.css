@@ -97,3 +97,8 @@
     align-items: flex-start;
     font-size: 14px;
 }
+
+.td__link {
+    color: #fff !important;
+    background-color: transparent !important;
+}

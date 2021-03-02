@@ -104,7 +104,6 @@ const CheckoutPage = (props) => {
   const [password, setPassword] = useState("");
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  console.log("user107", user);
   const onAddressSubmit = (addr) => {
     setSelectedAddress(addr);
     setConfirmAddress(true);
@@ -192,7 +191,7 @@ const CheckoutPage = (props) => {
 
   return (
     <Container>
-      <div style={{paddingTop:'4rem', textAlign:'center'}}>
+      <div style={{ paddingTop: "4rem", textAlign: "center" }}>
         <h2>Checkout</h2>
         <p>Fill up correct info and check all the details carefully</p>
       </div>
@@ -282,7 +281,7 @@ const CheckoutPage = (props) => {
                   <Cart onlyCartItems={true} />
                 ) : orderConfirmation ? (
                   <div className="stepCompleted">
-                    {Object.keys(cart.cartItems).length} items
+                    {Object.keys(cart.cartItems).length}items
                   </div>
                 ) : null
               }
@@ -295,11 +294,10 @@ const CheckoutPage = (props) => {
                 }}
               >
                 <div
-                 
                   style={{
                     padding: "20px",
                     alignItems: "center",
-                    flexWrap:'nowrap'
+                    flexWrap: "nowrap",
                   }}
                 >
                   <p style={{ fontSize: "12px" }}>

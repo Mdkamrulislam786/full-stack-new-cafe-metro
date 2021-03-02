@@ -18,6 +18,7 @@ function createCategories(categories, parentId = null) {
       slug: cate.slug,
       parentId: cate.parentId,
       type: cate.type,
+      img: cate.categoryImage,
       children: createCategories(categories, cate._id),
     });
   }
@@ -33,7 +34,8 @@ exports.addCategory = (req, res) => {
   };
 
   if (req.file) {
-    categoryObj.categoryImage = process.env.API + "/public/" + req.file.filename;
+    categoryObj.categoryImage =
+      process.env.API + "/public/" + req.file.filename;
   }
 
   if (req.body.parentId) {

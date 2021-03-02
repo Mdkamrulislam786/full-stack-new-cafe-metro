@@ -10,6 +10,7 @@ import Navbar from "./Navbar";
 import "../ShoppingCart.css";
 const MenuItems = () => {
   const product = useSelector((state) => state.product);
+  console.log("product", product);
   const dispatch = useDispatch();
   const [modalInfo, setModalInfo] = useState({
     _id: "",
@@ -18,7 +19,7 @@ const MenuItems = () => {
     img: "",
     description: "",
   });
-  const {  name, price, img, description } = modalInfo;
+  const { name, price, img, description } = modalInfo;
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -34,7 +35,9 @@ const MenuItems = () => {
       <Navbar />
       <div style={{ paddingTop: "11rem" }}>
         <Container>
-          <h2>{param.slug}</h2>
+          <h2 style={{ marginBottom: "2rem" }}>
+            Choose your favourite {product?.products[0]?.category?.name}
+          </h2>
           <Row>
             {product?.products.map((prod, i) => {
               const { _id, name, price, description } = prod;

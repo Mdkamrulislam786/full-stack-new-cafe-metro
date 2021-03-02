@@ -4,12 +4,7 @@ import { Link } from "react-router-dom";
 import "../cart.css";
 const CartTotals = ({ totalPrice }) => {
   return (
-    <>
-      <div
-        style={{ width: "100%", height: "3px", backgroundColor: "green" }}
-      ></div>
     <Container>
-      
       <div
         style={{
           display: "flex",
@@ -34,8 +29,7 @@ const CartTotals = ({ totalPrice }) => {
           Checkout
         </Button>
       </div>
-      </Container>
-      </>
+    </Container>
   );
 };
 

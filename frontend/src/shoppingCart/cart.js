@@ -41,21 +41,21 @@ const Cart = (props) => {
     dispatch(removeCartItem({ productId: _id }));
   };
 
-    if (props.onlyCartItems) {
-      return (
-        <>
-          {Object.keys(cartItems).map((key, index) => (
-            <CartItems
-              key={index}
-              cartItem={cartItems[key]}
-              onQuantityInc={onQuantityIncrement}
-              onQuantityDec={onQuantityDecrement}
-              keepRemove
-            />
-          ))}
-        </>
-      );
-    }
+  if (props.onlyCartItems === true) {
+    return (
+      <>
+        {Object.keys(cartItems).map((key, index) => (
+          <CartItems
+            key={index}
+            cartItem={cartItems[key]}
+            onQuantityInc={onQuantityIncrement}
+            onQuantityDec={onQuantityDecrement}
+            keepRemove
+          />
+        ))}
+      </>
+    );
+  }
 
   const showCart = () => {
     if (
@@ -67,35 +67,38 @@ const Cart = (props) => {
           <Navbar />
           <EmptyCart />
         </>
-      )
+      );
     } else {
       return (
         <Fragment>
           <Navbar />
-          <div style={{ paddingTop: "8rem" }}>
+          <div style={{ paddingTop: "8rem", textAlign: "center" }}>
             <h2
               style={{
                 textAlign: "center",
                 marginTop: "30px",
-                marginBottom: "20px",
                 fontFamily: "Robotto",
               }}
             >
               Your Cart
             </h2>
+       
+            <p style={{ marginBottom: "20px", marginTop: "0px" }}>
+              Reload the page if you get a wrong total price
+            </p>
           </div>
           <CartColumns />
-          <Container fluid>
-            {Object.keys(cartItems).map((key, index) => (
-              <CartItems
-                key={index}
-                cartItem={cartItems[key]}
-                onQuantityInc={onQuantityIncrement}
-                onQuantityDec={onQuantityDecrement}
-                onRemoveCartItem={onRemoveCartItem}
-              />
-            ))}
-          </Container>
+
+          {Object.keys(cartItems).map((key, index) => (
+            <CartItems
+              key={index}
+              cartItem={cartItems[key]}
+              onQuantityInc={onQuantityIncrement}
+              onQuantityDec={onQuantityDecrement}
+              onRemoveCartItem={onRemoveCartItem}
+            />
+          ))}
+
           <CartTotals
             totalPrice={Object.keys(cart.cartItems).reduce(
               (totalPrice, key) => {

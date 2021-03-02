@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getOrders } from "../../../../actions";
 import "../Profile.css";
 import moment from "moment";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const Orders = ({ userName }) => {
   const dispatch = useDispatch();
@@ -13,12 +13,13 @@ const Orders = ({ userName }) => {
   useEffect(() => {
     dispatch(getOrders());
   }, []);
+  const history = useHistory();
   return (
-    <div className="profile__order" >
+    <div className="profile__order">
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>Order Num</th>
+            <th>Order Num (click to see info)</th>
             <th>Name</th>
             <th>Total</th>
             <th>Status</th>
@@ -27,29 +28,29 @@ const Orders = ({ userName }) => {
         </thead>
         <tbody>
           {user.orders.reverse().map((order, i) => (
-          
-            <tr key={i}>
-                
-                <td><Link  to={`/order_details/${order._id}`}> {order._id} </Link></td>
-                <td> {userName} </td>
-                <td>
-                  {order.items
-                    .map((item) => item.payablePrice * item.purchasedQty)
-                    .reduce((acc, current) => {
-                      return acc + current;
-                    }, 0)}{" "}
-                  tk
-                </td>
-                <td>
-                  {
-                    order.orderStatus
-                      .filter((item) => item.isCompleted === true)
-                      .reverse()[0].type
-                  }
-                </td>
-                <td> {moment(order.orderStatus[0].date).calendar()} </td>
-              </tr>
-      
+            <tr
+              key={i}
+              onClick={() => history.push(`/order_details/${order._id}`)}
+            >
+              <td>{order._id}</td>
+              <td> {userName} </td>
+              <td>
+                {order.items
+                  .map((item) => item.payablePrice * item.purchasedQty)
+                  .reduce((acc, current) => {
+                    return acc + current;
+                  }, 0)}{" "}
+                tk
+              </td>
+              <td>
+                {
+                  order.orderStatus
+                    .filter((item) => item.isCompleted === true)
+                    .reverse()[0].type
+                }
+              </td>
+              <td> {moment(order.orderStatus[0].date).calendar()} </td>
+            </tr>
           ))}
         </tbody>
       </Table>

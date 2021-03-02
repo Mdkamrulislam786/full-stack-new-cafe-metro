@@ -5,7 +5,7 @@ let data = [
   "item",
   "name",
   "price",
-  "quantity",
+  "number",
   "remove",
   "total",
 ];
@@ -13,7 +13,7 @@ let data = [
 const CartColumns = () => {
   return (
     <div>
-      <Container fluid className="text-center d-lg-block">
+      <Container className="text-center">
         <Row>
           {data.map((item, index) => {
             return (

@@ -1,28 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
+import axios from "../../../../helpers/axios";
+import { api } from "../../../../urlConfig";
 import "./ImageGallery.css";
 
-const images = [
-  {
-    original: "https://picsum.photos/id/1018/1000/600/",
-    thumbnail: "https://picsum.photos/id/1018/250/150/",
-  },
-  {
-    original: "https://picsum.photos/id/1015/1000/600/",
-    thumbnail: "https://picsum.photos/id/1015/250/150/",
-  },
-  {
-    original: "https://picsum.photos/id/1019/1000/600/",
-    thumbnail: "https://picsum.photos/id/1019/250/150/",
-  },
-];
-
 const CMGallery = () => {
+  const [gImgs, setImages] = useState([]);
+
+  useEffect(() => {
+    let getGalleryImages = async () => {
+      let res = await axios.get(`${api}/gallery/getImages`);
+      let resData = res.data?.galleryList;
+      setImages(resData);
+    };
+    getGalleryImages();
+  }, []);
+  //newImages must be an array of objects
+  const newImges = gImgs?.map((imgs) => {
+    return {
+      ...imgs,
+      original: imgs.img,
+      thumbnail: imgs.img,
+    };
+  });
+
   return (
     <div className="gallery">
       <h3>Our Gallery</h3>
-      <ImageGallery items={images} />
+      <ImageGallery items={newImges} />
     </div>
   );
 };

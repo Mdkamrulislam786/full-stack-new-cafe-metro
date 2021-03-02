@@ -19,6 +19,8 @@ const TestMenu = () => {
     dispatch(getAllCategory());
   }, [dispatch]);
   let defaultKey = category.categories[0];
+
+
   const renderParentCategories = (categories) => {
     let parentCategories = [];
     for (let category of categories) {
@@ -36,22 +38,18 @@ const TestMenu = () => {
       <Tab.Pane key={i} eventKey={category.name}>
         <Row>
           {category.children.map((cat, i) => (
-            <Col xs={6} md={4} key={i}>
+            <Col xs={6} md={3} key={i}>
               <div
                 className="menu__category"
                 onClick={() => history.push(`/shop/${cat.slug}`)}
               >
                 <img
-                  src={
-                    cat?.categoryImage
-                      ? cat?.categoryImage
-                      : burger
-                  }
+                  src={cat?.img ? cat?.img : burger}
                   alt="cat-img"
                   className="catImg"
                 />
-                <h2>{cat.name}</h2>
               </div>
+              <h2 style={{marginBottom:'2rem'}}>{cat.name}</h2>
             </Col>
           ))}
         </Row>
@@ -63,6 +61,7 @@ const TestMenu = () => {
   return (
     <div className="Collections">
       <Container>
+        <h2>Choose a category</h2>
         <Tab.Container defaultActiveKey={defaultKey?.name}>
           <Row>
             <Col>
