@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
-
 //COMPONENTS
 import Home from "./components/Home/home";
 import Layout from "./hoc/Layout/layout";
@@ -23,6 +22,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { isUserLoggedIn, updateCart } from "./actions";
 import Reset from "./components/Reset";
 import NewPassword from "./components/NewPassword";
+import Login from "./components/Auth/Login/Login";
+import Signup from "./components/Auth/Signup/Signup";
+
 const Routes = () => {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
@@ -60,6 +62,8 @@ const Routes = () => {
         <Route path="/shop/:slug" exact component={MenuItems} />
         <Route path="/reset" exact component={Reset} />
         <Route path="/reset/:token" exact component={NewPassword} />
+        <Route path="/signin" exact component={Login} />
+        <Route path="/signup" exact component={Signup} />
       </Switch>
     </Layout>
   );

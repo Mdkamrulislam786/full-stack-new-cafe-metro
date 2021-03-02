@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800');
 
-* {
-    box-sizing: border-box;
+.login {
+    display: grid;
+    place-items: center;
+    height: 100vh;
 }
 
 h1,
@@ -72,6 +74,6 @@ span {
     color: #167bff;
 }
 
-.submit-btn{
+.submit-btn {
     width: 90%;
 }

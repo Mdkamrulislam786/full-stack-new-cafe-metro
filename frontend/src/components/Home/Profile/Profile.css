@@ -3,6 +3,14 @@
     margin-bottom: 3rem;
 }
 
+.profile__login {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 .profile__name {
     height: 200px;
     background-color: #000;
@@ -15,7 +23,8 @@
     align-items: center;
     flex-direction: column;
 }
-.profile__name p{
+
+.profile__name p {
     font-size: 18px;
     color: #fff;
     font-weight: 400;
@@ -30,9 +39,11 @@
     margin-right: 2px;
     border-radius: 3px;
 }
+
 .profile a:active {
     background-color: green !important;
 }
+
 .profile a:focus {
     color: #fff;
     background-color: green !important;

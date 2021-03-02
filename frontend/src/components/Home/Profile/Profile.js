@@ -3,13 +3,19 @@ import { Nav, Row, Tab, Col, Container, Button } from "react-bootstrap";
 import AccountInfo from "./AccountInfo";
 import Orders from "./Orders/insex";
 import "./Profile.css";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   return !user ? (
-    <h2 style={{ height: "100vh", display: "grid", placeItems: "center" }}>
-      Login to see your profile
-    </h2>
+    <div
+      className="profile__login"
+    >
+      <h2>Login to see your profile</h2>
+      <Button as={Link} to="/signin">
+        Log In
+      </Button>
+    </div>
   ) : (
     <div className="profile">
       <div className="profile__name">

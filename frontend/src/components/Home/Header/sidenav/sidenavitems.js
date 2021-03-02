@@ -21,7 +21,6 @@ const SideNavItems = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
@@ -77,19 +76,10 @@ const SideNavItems = () => {
   );
   const renderNonLoggedInMenu = () => (
     <>
-      <Nav.Link
-        onClick={() => {
-          setLoginModal(true);
-        }}
-      >
+      <Nav.Link as={Link} to="/signin">
         <i className="fas fa-id-card-alt icon" /> Login
       </Nav.Link>
-      <Nav.Link
-        onClick={() => {
-          setLoginModal(true);
-          setSignup(true);
-        }}
-      >
+      <Nav.Link as={Link} to="/signup">
         <i className="fas fa-id-card-alt icon" /> Signup
       </Nav.Link>
     </>
@@ -180,7 +170,6 @@ const SideNavItems = () => {
                   label="Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  // rightElement={<a href="#">Forgot?</a>}
                 />
                 <MaterialButton
                   title={signup ? "Register" : "Login"}
