@@ -11,6 +11,14 @@
     flex-direction: column;
 }
 
+.profile__order {
+    overflow: scroll;
+}
+
+.profile__order::-webkit-scrollbar {
+    display: none;
+}
+
 .profile__name {
     height: 200px;
     background-color: #000;

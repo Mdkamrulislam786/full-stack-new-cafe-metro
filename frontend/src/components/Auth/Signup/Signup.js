@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Card, Container } from "react-bootstrap";
+import { Alert, Button, Card, Container } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { signup as _signup } from "../../../actions";
@@ -10,6 +10,9 @@ const Signup = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [show, setShow] = useState(false);
+  const [error, setError] = useState("");
+
   const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -19,7 +22,7 @@ const Signup = () => {
     }
   }, [auth.authenticate]);
 
-  const userSignup = async () => {
+  const userSignup = () => {
     const user = { firstName, lastName, email, password };
     if (
       firstName === "" ||
@@ -27,28 +30,64 @@ const Signup = () => {
       email === "" ||
       password === ""
     ) {
+      setError("All Feilds are required");
       return;
     }
 
-    dispatch(await _signup(user));
-    setFirstName("");
-    setLastName("");
-    setEmail("");
-    setPassword("");
-    history.push("/signin");
+    dispatch(_signup(user));
+    if (auth.error ?? auth.authenticate === false) {
+      return;
+    } else {
+      setShow(true);
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setPassword("");
+      history.push("/signin");
+    }
   };
 
   return signup ? (
-    <h2>You are Loged In Go to <Link to="/profile">Profile</Link> </h2>
+    <div
+      style={{
+        height: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+      }}
+    >
+      <h2>You are Loged in</h2> <br />
+      <Button as={Link} to="/profile">
+        Go to Profile
+      </Button>
+    </div>
   ) : (
-    <Container>
-      {auth.error && (
-        <div style={{ color: "red", fontSize: 12 }}>{auth.error}</div>
-      )}
+    <Container onClick={error ? () => setError("") : null}>
+      <Alert
+        show={show}
+        variant="success"
+        onClose={() => setShow(false)}
+        dismissible
+      >
+        <Alert.Heading>Signup successfull</Alert.Heading>
+        <p>Welcome to New cafe metro, Plz Login</p>
+      </Alert>
+
       <div className="login">
         <Card style={{ maxWidth: "500px", padding: "1rem" }}>
           <form>
             <h2>Sign Up</h2>
+            {auth.error && (
+              <div style={{ color: "red", fontSize: 12, textAlign: "center" }}>
+                {auth.error}
+              </div>
+            )}
+            {error ? (
+              <div style={{ color: "red", fontSize: 12, textAlign: "center" }}>
+                {error}
+              </div>
+            ) : null}
             <div className="form-group">
               <label>First name</label>
               <input

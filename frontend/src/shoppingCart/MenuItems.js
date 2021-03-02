@@ -18,11 +18,11 @@ const MenuItems = () => {
     img: "",
     description: "",
   });
-  const { _id, name, price, img, description } = modalInfo;
+  const {  name, price, img, description } = modalInfo;
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  //const handleShow = () => setShow(true);
   const param = useParams();
 
   useEffect(() => {

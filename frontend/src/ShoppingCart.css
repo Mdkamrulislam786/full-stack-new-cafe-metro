@@ -7,7 +7,12 @@
 
 /* Navbar */
 
-
+.card {
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc !important;
+  -moz-box-shadow: 3px 3px 5px 6px #ccc !important;
+  /* box-shadow: 7px 5px 5px 6px #ccc !important; */
+  box-shadow: 10px 10px 5px lightgrey !important;
+}
 
 .header {
   background-image: url(./images/pastries.jpg);
@@ -161,13 +166,14 @@ h2 {
   }
 
   .images__h3 h5 {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
   }
-   .images__h3 p {
-     font-size: 14px;
 
-   }
+  .images__h3 p {
+    font-size: 14px;
+
+  }
 }
 
 @media (min-width:320px) and (max-width:768px) {

@@ -9,7 +9,6 @@ import ShoppingCart from "./ShoppingCart";
 import Catering from "./components/Home/Body/Menu/OurServices/services/catering";
 import Wedding from "./components/Home/Body/Menu/OurServices/services/Wedding";
 import OurStory from "./components/Home/Body/Menu/OurServices/services/OurStory";
-import TestMenu from "./shoppingCart/TestMenu";
 import Profile from "./components/Home/Profile/Profile";
 import MenuItems from "./shoppingCart/MenuItems";
 import CheckoutPage from "./shoppingCart/CheckoutPage";

@@ -14,7 +14,7 @@ const Orders = ({ userName }) => {
     dispatch(getOrders());
   }, []);
   return (
-    <div>
+    <div className="profile__order" >
       <Table striped bordered hover>
         <thead>
           <tr>

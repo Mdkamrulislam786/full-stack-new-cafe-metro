@@ -6,6 +6,13 @@
     height: 100vh;
 }
 
+.login .card {
+    -webkit-box-shadow: 3px 3px 5px 6px #ccc !important;
+    -moz-box-shadow: 3px 3px 5px 6px #ccc !important;
+    /* box-shadow: 7px 5px 5px 6px #ccc !important; */
+    box-shadow: 10px 10px 5px lightgrey !important;
+}
+
 h1,
 h2,
 h3,

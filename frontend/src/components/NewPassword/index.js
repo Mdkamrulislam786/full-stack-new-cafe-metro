@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import M from "materialize-css";
-import { Button, Card } from "react-bootstrap";
+import { Button, Card, Container } from "react-bootstrap";
 import { api } from "../../urlConfig";
 
 const NewPassword = () => {
@@ -35,24 +35,26 @@ const NewPassword = () => {
       });
   };
   return (
-    <div style={{ height: "100%", display: "grid", placeItems: "center" }}>
-      <h2 style={{ paddingTop: "4rem" }}>Enter new password</h2>
-      <Card
-        style={{ maxWidth: "300px", padding: "20px", marginBottom: "1rem" }}
-      >
-        <h2>New Cafe Metro</h2>
-        <input
-          style={{ paddingLeft: "5px" }}
-          type="password"
-          placeholder="enter a new password"
-          value={password}
-          onChange={(e) => setPasword(e.target.value)}
-        />
-        <Button variant="success" onClick={() => PostData()}>
-          Update password
-        </Button>
-      </Card>
-    </div>
+    <Container>
+      <div style={{ height: "100%", display: "grid", placeItems: "center" }}>
+        <h2 style={{ paddingTop: "4rem" }}>Enter new password</h2>
+        <Card
+          style={{ maxWidth: "500px", padding: "20px", marginBottom: "1rem" }}
+        >
+          <h2>New Cafe Metro</h2>
+          <input
+            style={{ paddingLeft: "5px" }}
+            type="password"
+            placeholder="enter a new password"
+            value={password}
+            onChange={(e) => setPasword(e.target.value)}
+          />
+          <Button variant="success" onClick={() => PostData()}>
+            Update password
+          </Button>
+        </Card>
+      </div>
+    </Container>
   );
 };
 

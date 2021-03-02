@@ -6,7 +6,7 @@ import Card from "../../components/UI/Card";
 import "./style.css";
 import { Breed } from "../../components/MaterialUI";
 
-const OrderPage = (props) => {
+const OrderPage = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 
@@ -38,14 +38,12 @@ const OrderPage = (props) => {
                   <img
                     className="orderImg"
                     src={item.productId.productPictures[0].img}
+                    alt={item.productId.name}
                   />
                 </div>
                 <div className="orderRow">
                   <div className="orderName">{item.productId.name}</div>
-                  <div className="orderPrice">
-                   
-                    {item.payablePrice}
-                  </div>
+                  <div className="orderPrice">{item.payablePrice}</div>
                   <div>{order.paymentStatus}</div>
                 </div>
               </Link>

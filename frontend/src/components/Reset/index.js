@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import M from "materialize-css";
-import { Button, Card } from "react-bootstrap";
+import { Button, Card, Container } from "react-bootstrap";
 import { api } from "../../urlConfig";
 const Reset = () => {
   const history = useHistory();
@@ -37,28 +37,30 @@ const Reset = () => {
       });
   };
   return (
-    <div style={{ height: "100%", display: "grid", placeItems: "center" }}>
-      <h2 style={{ paddingTop: "4rem" }}>Reset Password</h2>
-      <p style={{ textAlign: "center" }}>
-        A mail will be sent to you, check your mail after submit
-      </p>
+    <Container>
+      <div style={{ height: "100%", display: "grid", placeItems: "center" }}>
+        <h2 style={{ paddingTop: "4rem" }}>Reset Password</h2>
+        <p style={{ textAlign: "center" }}>
+          A mail will be sent to you, check your mail after submit
+        </p>
 
-      <Card
-        style={{ maxWidth: "300px", padding: "20px", marginBottom: "1rem" }}
-      >
-        <h2>New Cafe Metro</h2>
-        <input
-          style={{paddingLeft:'5px' }}
-          type="text"
-          placeholder="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <Button variant="success" onClick={() => PostData()}>
-          Submit
-        </Button>
-      </Card>
-    </div>
+        <Card
+          style={{ maxWidth: "500px", padding: "20px", marginBottom: "1rem" }}
+        >
+          {/* <h2>New Cafe Metro</h2> */}
+          <input
+            style={{ paddingLeft: "5px" }}
+            type="text"
+            placeholder="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <Button variant="success" onClick={() => PostData()}>
+            Submit
+          </Button>
+        </Card>
+      </div>
+    </Container>
   );
 };
 
