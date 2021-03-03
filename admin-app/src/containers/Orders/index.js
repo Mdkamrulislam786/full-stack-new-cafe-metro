@@ -85,7 +85,15 @@ const Orders = (props) => {
             margin: "10px 0",
           }}
           key={index}
-          headerLeft={orderItem._id}
+          headerleft="true"
+          ordernum={orderItem._id}
+          status={
+            orderItem.orderStatus
+              .filter((status) => {
+                return status.isCompleted === true;
+              })
+              ?.reverse()[0].type
+          }
         >
           <div
             style={{
@@ -122,7 +130,6 @@ const Orders = (props) => {
                   : null}
               </span>
               <br />
-              {/* {JSON.stringify(currentPaymentStatus())} */}
               <select
                 className="value"
                 onChange={(e) => setPaymentType(e.target.value)}

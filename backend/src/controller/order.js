@@ -1,6 +1,27 @@
 const Order = require("../models/order");
 const Cart = require("../models/cart");
 const Address = require("../models/address");
+// const nodemailer = require("nodemailer");
+
+// let testAccount = async () => await nodemailer.createTestAccount();
+// let transporter = nodemailer.createTransport({
+//   host: "smtp.ethereal.email",
+//   port: 587,
+//   secure: false, // true for 465, false for other ports
+//   auth: {
+//     user: testAccount.user, // generated ethereal user
+//     pass: testAccount.pass, // generated ethereal password
+//   },
+// });
+
+// verify connection configuration
+// transporter.verify(function (error, success) {
+//   if (error) {
+//     console.log(error);
+//   } else {
+//     console.log("Server is ready to take our messages");
+//   }
+// });
 
 exports.addOrder = (req, res) => {
   Cart.deleteOne({ user: req.user._id }).exec((error, result) => {
@@ -49,6 +70,15 @@ exports.addOrder = (req, res) => {
       order.save((error, order) => {
         if (error) return res.status(400).json({ error });
         if (order) {
+          // SEND SINUP SUCCESS MAIL TO USER
+          // transporter.sendMail({
+          //   to: "kamrulislam.ki01@gmail.com",
+          //   from: "admin@newcafemetro.com",
+          //   subject: "order successfull",
+          //   html: `<p>Order details</p>
+          //         <p>${order}</p>
+          // `,
+          // });
           res.status(201).json({ order });
         }
       });
