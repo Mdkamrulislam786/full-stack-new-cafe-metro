@@ -27,8 +27,8 @@ const Gallery = () => {
     return gallery.galleryImages.gallery?.length > 0
       ? gallery.galleryImages.gallery?.map((img, i) => (
           <Col md={3} key={i}>
-            <div className="gallery__img">
-              <img src={img.galleryImage} alt={img.name} />
+        
+              <img className="gallery__img" src={img.galleryImage} alt={img.name} />
               <Button
                 onClick={() => {
                   const id = img._id;
@@ -38,9 +38,9 @@ const Gallery = () => {
                 size="sm"
               >
                 Delete
-              </Button>{" "}
+              </Button>
               ({i})
-            </div>
+       
           </Col>
         ))
       : `No image added, add image`;
