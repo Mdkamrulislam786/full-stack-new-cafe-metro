@@ -14,6 +14,22 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ##VISIT NOW:
 New Cafe Metro: https://new-cafe-metro.netlify.app/
 
+
+# The App flow
+1. App comp: 
+ The app is wraped within redux Provider, thhe app is rendering the routes component where we have al the routes with exact compoenents
+2.  Routes Comp: 
+On page load checks if the user isLoggedin, if the user isnt logged in we call isUserLoggedIn() action and updating the cart 
+3. Route /shop: we have Navabr and TestMenu
+Navbar: we just select the cart state and show the added cart items number
+TestMenu: Rendering parent category and theire child(product) when productcategory clicked it goes to `/shop/${cat.slug}`
+4. `/shop/${cat.slug}` render the MenuItems compoenent
+MenuItems: onpage load dispatches getProductsBySlug(param.slug) action that gets the products and sets it to the product state
+prodyuct has addToCart(data) action that adds the item to the cart(state), then we go to '/cart' page
+5. '/cart': onpageload getCartItems() action is called that sets the cart itiems to cart state, we grab the cart state using useSelector. <CartItems /> compenent handles the cart actions like add remove increment decrement then we go to checkout
+
+6. '/checkout' 
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -80,3 +96,6 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+

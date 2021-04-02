@@ -10,7 +10,6 @@ import Navbar from "./Navbar";
 import "../ShoppingCart.css";
 const MenuItems = () => {
   const product = useSelector((state) => state.product);
-  console.log("product", product);
   const dispatch = useDispatch();
   const [modalInfo, setModalInfo] = useState({
     _id: "",
@@ -25,7 +24,6 @@ const MenuItems = () => {
   const handleClose = () => setShow(false);
   //const handleShow = () => setShow(true);
   const param = useParams();
-
   useEffect(() => {
     dispatch(getProductsBySlug(param.slug));
   }, [dispatch, param.slug]);

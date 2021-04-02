@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
-import "./testmenu.css";
+import "./Menu.css";
 import burger from "../images/burger.jpg";
-// import cake from "../images/cake-2.jpeg";
 //Bootsrap
 import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
 //REDUX
@@ -9,8 +8,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { getAllCategory } from "../actions";
 import { useHistory } from "react-router-dom";
 
+const Menu = () => {
 
-const TestMenu = () => {
   //GET ALL CATEGORIES WHEN RENDERED
   const category = useSelector((state) => state.category);
   const history = useHistory();
@@ -20,7 +19,7 @@ const TestMenu = () => {
   }, [dispatch]);
   let defaultKey = category.categories[0];
 
-
+  //parent category names with navlink
   const renderParentCategories = (categories) => {
     let parentCategories = [];
     for (let category of categories) {
@@ -49,7 +48,7 @@ const TestMenu = () => {
                   className="catImg"
                 />
               </div>
-              <h2 style={{marginBottom:'2rem'}}>{cat.name}</h2>
+              <h2 style={{ marginBottom: "2rem" }}>{cat.name}</h2>
             </Col>
           ))}
         </Row>
@@ -87,5 +86,4 @@ const TestMenu = () => {
   );
 };
 
-// export default TestMenu;
-export default TestMenu;
+export default Menu;

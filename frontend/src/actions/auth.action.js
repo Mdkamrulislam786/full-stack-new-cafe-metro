@@ -63,6 +63,7 @@ export const login = (user) => {
   };
 };
 
+//checks if the local storage has token and user property,if true Login successs / failure
 export const isUserLoggedIn = () => {
   return async (dispatch) => {
     const token = localStorage.getItem("token");

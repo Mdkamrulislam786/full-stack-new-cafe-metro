@@ -10,13 +10,13 @@ import Catering from "./components/Home/Body/Menu/OurServices/services/catering"
 import Wedding from "./components/Home/Body/Menu/OurServices/services/Wedding";
 import OurStory from "./components/Home/Body/Menu/OurServices/services/OurStory";
 import Profile from "./components/Home/Profile/Profile";
-import MenuItems from "./shoppingCart/MenuItems";
-import CheckoutPage from "./shoppingCart/CheckoutPage";
-import OrderDetailsPage from "./shoppingCart/OrderDetailsPage";
-import OrderPage from "./shoppingCart/OrderPage";
-import Cart from "./shoppingCart/cart";
-import Order from "./shoppingCart/Order/Order";
-import OrderCompleted from "./shoppingCart/Order/OrderCompleted";
+import MenuItems from "./shop/MenuItems";
+import CheckoutPage from "./shop/CheckoutPage";
+import OrderDetailsPage from "./shop/OrderDetailsPage";
+import OrderPage from "./shop/OrderPage";
+import Cart from "./shop/cart";
+import Order from "./shop/Order/Order";
+import OrderCompleted from "./shop/Order/OrderCompleted";
 import { useDispatch, useSelector } from "react-redux";
 import { isUserLoggedIn, updateCart } from "./actions";
 import Reset from "./components/Reset";
@@ -25,8 +25,9 @@ import Login from "./components/Auth/Login/Login";
 import Signup from "./components/Auth/Signup/Signup";
 
 const Routes = () => {
-  const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     if (!auth.authenticate) {
       dispatch(isUserLoggedIn());
@@ -37,6 +38,7 @@ const Routes = () => {
     console.log("App.js - updateCart");
     dispatch(updateCart());
   }, [dispatch, auth.authenticate]);
+
   return (
     <Layout>
       <Switch>
@@ -69,3 +71,5 @@ const Routes = () => {
 };
 
 export default Routes;
+
+//  on page load checks if the user isLoggedin, if the user isnt logged in we call isUserLoggedIn() action and updating the cart 

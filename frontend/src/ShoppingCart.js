@@ -1,7 +1,7 @@
 import React from "react";
-import Navbar from "./shoppingCart/Navbar";
-// import MainMenuHome from "./shoppingCart/Home";
-import TestMenu from "./shoppingCart/TestMenu";
+import Navbar from "./shop/Navbar";
+// import MainMenuHome from "./shop/Home";
+import TestMenu from "./shop/Menu";
 import "./ShoppingCart.css";
 import ModalButton from "./components/widgets/Modals/ItemInfoModal";
 

@@ -7,7 +7,6 @@ import CartItems from "./CartItems/CartItems";
 //REDUX
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, getCartItems, removeCartItem } from "../actions";
-import { Container } from "react-bootstrap";
 import Navbar from "./Navbar";
 
 const Cart = (props) => {
