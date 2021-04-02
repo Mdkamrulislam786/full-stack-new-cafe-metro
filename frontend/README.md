@@ -26,9 +26,30 @@ TestMenu: Rendering parent category and theire child(product) when productcatego
 4. `/shop/${cat.slug}` render the MenuItems compoenent
 MenuItems: onpage load dispatches getProductsBySlug(param.slug) action that gets the products and sets it to the product state
 prodyuct has addToCart(data) action that adds the item to the cart(state), then we go to '/cart' page
-5. '/cart': onpageload getCartItems() action is called that sets the cart itiems to cart state, we grab the cart state using useSelector. <CartItems /> compenent handles the cart actions like add remove increment decrement then we go to checkout
+5. '/cart': onpageload getCartItems() action is called that sets the cart itiems to cart state, we grab the cart state using useSelector. <CartItems /> compenent handles the cart actions like add remove increment decrement then we go to '/checkout'
 
 6. '/checkout' 
+checkout step 1: if the user isnt loggedin we login the user and gets the users info
+checkout step 2: we get the users address, if the user is authenticated then we get the user adresses, we listthe address if one is selected and confirmed then we set the data to selectedAddress state
+checkout step 3: we just show the previously selected cart items  <Cart onlyCartItems={true} />, then we set the payement type and where to send the email thins
+checkout step 4: we select the payment type, then confirm button is clicked , then we run onConfirmOrder() function that has the payload and dispatches addOrder action
+<code>const payload = {
+      addressId: selectedAddress._id,
+      address: selectedAddress,
+      totalAmount,
+      items,
+      paymentType: "cod",
+    };
+
+    console.log(payload);
+    dispatch(addOrder(payload));
+</code>
+then we are redierct to the order details page, where we grab the order details onpage load and show it to the user
+
+#### The App flow ENDS here
+
+
+
 
 ## Available Scripts
 

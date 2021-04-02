@@ -104,12 +104,8 @@ const CheckoutPage = (props) => {
   const [password, setPassword] = useState("");
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  const onAddressSubmit = (addr) => {
-    setSelectedAddress(addr);
-    setConfirmAddress(true);
-    setOrderSummary(true);
-  };
 
+  //ADDRESS FUNCTIONS
   const selectAddress = (addr) => {
     //console.log(addr);
     const updatedAddress = address.map((adr) =>
@@ -126,13 +122,21 @@ const CheckoutPage = (props) => {
     setOrderSummary(true);
   };
 
+  const onAddressSubmit = (addr) => {
+    setSelectedAddress(addr);
+    setConfirmAddress(true);
+    setOrderSummary(true);
+  };
+
   const enableAddressEditForm = (addr) => {
     const updatedAddress = address.map((adr) =>
       adr._id === addr._id ? { ...adr, edit: true } : { ...adr, edit: false }
     );
     setAddress(updatedAddress);
   };
+  //ADDRESS FUNCTIONS END//
 
+  
   const userOrderConfirmation = () => {
     setOrderConfirmation(true);
     setOrderSummary(false);
