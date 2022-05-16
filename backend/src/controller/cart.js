@@ -58,7 +58,6 @@ exports.addItemToCart = (req, res) => {
   });
 };
 
-
 //GETCARTITEMS
 exports.getCartItems = (req, res) => {
   //const { user } = req.body.payload;
