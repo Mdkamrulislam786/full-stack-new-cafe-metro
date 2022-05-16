@@ -30,7 +30,7 @@ const Signin = (props) => {
   };
 
   if (auth.authenticate) {
-    return <Redirect to={`/`} />;
+    return <Redirect to="/" />;
   }
 
   return (
