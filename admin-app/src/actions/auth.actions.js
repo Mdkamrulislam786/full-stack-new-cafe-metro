@@ -1,8 +1,8 @@
 import { authConstants } from "./constants";
 import axios from "../helpers/axios";
+import { redirect } from "../helpers/functions";
 
 export const login = (user) => {
-  console.log("user login", user);
   return async (dispatch) => {
     // dispatch({ type: authConstants.LOGIN_REQUEST, payload: null });
     const res = await axios.post(`/admin/signin`, {
@@ -20,6 +20,7 @@ export const login = (user) => {
           user,
         },
       });
+      redirect("/");
     } else {
       if (res.status === 400) {
         dispatch({
