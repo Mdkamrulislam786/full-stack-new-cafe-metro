@@ -6,18 +6,18 @@ import store from "../store";
 const getCartItems = () => {
   return async (dispatch) => {
     try {
-      dispatch({ type: cartConstants.ADD_TO_CART_REQUEST });
-      const res = await axios.post(`/user/getCartItems`);
-      if (res.status === 200) {
-        const { cartItems } = res.data;
-        // console.log({ getCartItems: cartItems });
-        if (cartItems) {
-          dispatch({
-            type: cartConstants.ADD_TO_CART_SUCCESS,
-            payload: { cartItems },
-          });
-        }
-      }
+      // dispatch({ type: cartConstants.ADD_TO_CART_REQUEST });
+      // const res = await axios.post(`/user/getCartItems`);
+      // if (res.status === 200) {
+      //   const { cartItems } = res.data;
+      //   // console.log({ getCartItems: cartItems });
+      //   if (cartItems) {
+      //     dispatch({
+      //       type: cartConstants.ADD_TO_CART_SUCCESS,
+      //       payload: { cartItems },
+      //     });
+      //   }
+      // }
     } catch (error) {
       console.log(error);
     }
@@ -50,10 +50,12 @@ export const addToCart = (product, newQty = 1) => {
         //         product: cartItems[key]._id
         //     }
         // })
-        cartItems: [{
-          product: product._id,
-          quantity: qty,
-        }],
+        cartItems: [
+          {
+            product: product._id,
+            quantity: qty,
+          },
+        ],
       };
       // console.log("cart-payload", payload);
       const res = await axios.post(`/user/cart/addtocart`, payload);

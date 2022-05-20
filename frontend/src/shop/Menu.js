@@ -9,7 +9,6 @@ import { getAllCategory } from "../actions";
 import { useHistory } from "react-router-dom";
 
 const Menu = () => {
-
   //GET ALL CATEGORIES WHEN RENDERED
   const category = useSelector((state) => state.category);
   const history = useHistory();

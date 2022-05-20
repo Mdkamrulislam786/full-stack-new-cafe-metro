@@ -40,8 +40,12 @@ export const login = (user) => {
     const res = await axios.post(`/signin`, {
       ...user,
     });
+    console.log("res", res);
+    console.log("res status", res.status);
 
     if (res.status === 200) {
+      console.log("res ok");
+      console.log("res.data", res.data);
       const { token, user } = res.data;
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(user));

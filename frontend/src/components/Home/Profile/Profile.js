@@ -8,9 +8,7 @@ import { Link } from "react-router-dom";
 const Profile = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   return !user ? (
-    <div
-      className="profile__login"
-    >
+    <div className="profile__login">
       <h2>Login to see your profile</h2>
       <Button as={Link} to="/signin">
         Log In
